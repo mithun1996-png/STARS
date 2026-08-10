@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Mess / PG Listings</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #ffffff);
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+        }
+
+        header p {
+            color: #ecf0f1;
+            font-weight: 300;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* TOP SECTION NAVIGATION */
+        .top-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 20px;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .add-btn {
+            background: #27ae60;
+            color: white;
+        }
+        .add-btn:hover { background: #219150; }
+
+        .back-btn {
+            background: #34495e;
+            color: white;
+        }
+        .back-btn:hover { background: #2c3e50; }
+
+        /* GRID */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding-bottom: 50px;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        /* IMAGE */
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 3px solid #3498db;
+        }
+
+        /* CONTENT */
+        .content {
+            padding: 20px;
+        }
+
+        .content h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 22px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .content p {
+            margin: 8px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .content i {
+            width: 20px;
+            color: #3498db;
+            text-align: center;
+            margin-right: 5px;
+        }
+
+        /* CONTACT BUTTON */
+        .contact-btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 12px 18px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .contact-btn:hover {
+            background: #2980b9;
+        }
+
+        /* 3. FIX: EMPTY STATE GRID FIX */
+        .empty {
+            text-align: center;
+            margin-top: 60px;
+            color: #7f8c8d;
+            grid-column: 1 / -1; /* Forces the empty message to span the full width */
+        }
+
+        .empty i {
+            font-size: 50px;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Mess / PG Listings</h1>
+        <p>Find comfortable accommodation for students in Medinipur</p>
+    </header>
+
+    <div class="top-section">
+        <a href="/" class="btn back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+        <a href="/add_messpg/" class="btn add-btn">
+            <i class="fa-solid fa-plus"></i> Add Mess / PG
+        </a>
+    </div>
+
+    <div class="container">
+
+        {% if messes %}
+
+            {% for mess in messes %}
+
+                <div class="card">
+
+                    {% if mess.image %}
+                        <img src="{{ mess.image.url }}" alt="{{ mess.name }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/400x230.png?text=No+Image+Available" alt="No Image">
+                    {% endif %}
+
+                    <div class="content">
+
+                        <h2>{{ mess.name }}</h2>
+
+                        <p><i class="fa-solid fa-user"></i> <b>Owner:</b> {{ mess.owner_name }}</p>
+                        <p><i class="fa-solid fa-location-dot"></i> <b>Location:</b> {{ mess.location }}</p>
+                        <p><i class="fa-solid fa-map"></i> <b>District:</b> {{ mess.district }}</p>
+                        <p><i class="fa-solid fa-indian-rupee-sign" style="color: #27ae60;"></i> <b>Rent:</b> ₹{{ mess.rent }} / month</p>
+                        <p><i class="fa-solid fa-utensils"></i> <b>Food:</b> {{ mess.food_available }}</p>
+
+                        <a href="https://wa.me/91{{ mess.phone }}" class="contact-btn">
+                            <i class="fa-brands fa-whatsapp"></i> Contact Owner
+                        </a>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+                <i class="fa-solid fa-house-circle-xmark"></i>
+                <h2>No Mess / PG Available</h2>
+                <p>Be the first to add a listing in your area!</p>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

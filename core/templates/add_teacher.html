@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Teacher Profile</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #ffffff);
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #219150;
+        }
+
+        .note {
+            text-align: center;
+            font-size: 13px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Medinipur Tutor</h1>
+    <p>Become a Teacher & Reach Students Easily</p>
+</header>
+
+<div class="form-container">
+
+    <h2>Add Your Teaching Profile</h2>
+
+    <!-- ✅ FIXED FORM -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label>Full Name</label>
+        <input type="text" name="name" required>
+
+        <label>Subject</label>
+        <select name="subject" required>
+            <option value="">Select Subject</option>
+            <option>Mathematics</option>
+            <option>Physical Science</option>
+            <option>Life Science</option>
+            <option>English</option>
+            <option>Bengali</option>
+            <option>History</option>
+            <option>Geography</option>
+            <option>Computer Science</option>
+        </select>
+
+        <label>Class You Teach</label>
+        <select name="classes" required>
+            <option value="">Select Class Range</option>
+            <option>Class 5–8</option>
+            <option>Class 9–10 (Secondary)</option>
+            <option>Class 11–12 (Higher Secondary)</option>
+        </select>
+
+        <label>Educational Qualification</label>
+        <select name="qualification" required>
+            <option value="">Select Qualification</option>
+            <option>Class 10</option>
+            <option>Class 12</option>
+            <option>B.Sc</option>
+            <option>B.A</option>
+            <option>M.Sc</option>
+            <option>M.A</option>
+            <option>PhD</option>
+        </select>
+
+        <label>Location</label>
+        <input type="text" name="location" required>
+
+        <label>Monthly Fees (₹)</label>
+        <input type="number" name="fees">
+
+        <label>Contact Number</label>
+        <input type="text" name="phone" required>
+
+        <!-- 🎥 VIDEO -->
+        <label>Upload Demo Lecture (Video)</label>
+        <input type="file" name="demo_video" accept="video/*">
+
+        <!-- 📄 NOTES -->
+        <label>Upload Demo Notes (PDF)</label>
+        <input type="file" name="demo_notes" accept="application/pdf">
+
+        <button type="submit">Submit Profile</button>
+
+    </form>
+
+    <p class="note">Your profile will be visible to students.</p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ teacher.name }} | Profile</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: linear-gradient(to right, #eef2f3, #ffffff);
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 36px;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -30px auto 40px auto; /* Pulls container slightly up into the header for a 3D effect */
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eef2f3;
+            padding-bottom: 8px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* 3. Upgraded Details Layout using CSS Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .info-card p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .info-card span {
+            display: block;
+            font-size: 12px;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .info-card i {
+            color: #3498db;
+            margin-right: 5px;
+        }
+
+        /* Video Styling */
+        video {
+            width: 100%;
+            max-width: 700px;
+            margin: 10px auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 4. Upgraded Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .contact-btn { background: #27ae60; }
+        .contact-btn:hover { background: #219150; }
+
+        .download-btn { background: #3498db; }
+        .download-btn:hover { background: #2980b9; }
+
+        .edit-btn { background: #f39c12; }
+        .edit-btn:hover { background: #d68910; }
+
+        .delete-btn { background: #e74c3c; }
+        .delete-btn:hover { background: #c0392b; }
+
+        /* 5. Button Layout Grouping */
+        .primary-actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .admin-actions {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .admin-actions p {
+            width: 100%;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            color: #2c3e50;
+        }
+    </style>
+<!--End of the Headre section--->
+</header>
+<!---
+This div holds  teacher profiels photo
+text-align: center
+Puts image in the center of the page 
+margin-top : -70px
+moves imgae upwrads so it overlaps with the header 
+-->
+<div style = " text-align : ceter; margin-top : -70px;">
+    <!---
+    Django Condition
+    If teacher has uploaded a photo then show the photo
+    Else 
+    show the nothing
+    teacher.photo comes from model.py
+    -->
+    {% if teacher.photo %}
+        <!---
+        Image Tag 
+        src
+        actual image location
+        teacher.photo.url
+        Django automatically gets imge path 
+        -->
+</div>
+
+<body>
+
+<header>
+    <h1>{{ teacher.name }}</h1>
+    <p><i class="fa-solid fa-chalkboard-user"></i> Verified Teacher Profile</p>
+</header>
+
+<div class="container">
+
+    <h2><i class="fa-solid fa-circle-info"></i> Teacher Details</h2>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <span>Subject</span>
+            <p><i class="fa-solid fa-book"></i> {{ teacher.subject }}</p>
+        </div>
+        <div class="info-card">
+            <span>Classes</span>
+            <p><i class="fa-solid fa-users"></i> {{ teacher.classes }}</p>
+        </div>
+        <div class="info-card">
+            <span>Qualification</span>
+            <p><i class="fa-solid fa-graduation-cap"></i> {{ teacher.qualification }}</p>
+        </div>
+        <div class="info-card">
+            <span>Location</span>
+            <p><i class="fa-solid fa-location-dot"></i> {{ teacher.location }}</p>
+        </div>
+        <div class="info-card" style="border-left-color: #27ae60;">
+            <span>Monthly Fees</span>
+            <p><i class="fa-solid fa-indian-rupee-sign" style="color:#27ae60;"></i> {{ teacher.fees }}</p>
+        </div>
+    </div>
+
+    {% if teacher.demo_video %}
+        <h3><i class="fa-solid fa-video"></i> Demo Lecture</h3>
+        <video controls>
+            <source src="{{ teacher.demo_video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% endif %}
+
+    <div class="primary-actions">
+        {% if teacher.demo_notes %}
+            <a href="{{ teacher.demo_notes.url }}" target="_blank" class="btn download-btn">
+                <i class="fa-solid fa-file-pdf"></i> Download Notes
+            </a>
+        {% endif %}
+
+        <a href="https://wa.me/91{{ teacher.phone }}" class="btn contact-btn">
+            <i class="fa-brands fa-whatsapp" style="font-size: 18px;"></i> Contact on WhatsApp
+        </a>
+    </div>
+
+    <div class="admin-actions">
+        <p>Profile Management</p>
+        <a href="{% url 'edit_teacher' teacher.id %}" class="btn edit-btn">
+            <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+        </a>
+
+        <a href="{% url 'delete_teacher' teacher.id %}" 
+           onclick="return confirm('Are you sure you want to delete this profile? This cannot be undone.');" 
+           class="btn delete-btn">
+            <i class="fa-solid fa-trash"></i> Delete Profile
+        </a>
+    </div>
+
+    <a href="/" class="back"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+
+</div>
+
+</body>
+</html>

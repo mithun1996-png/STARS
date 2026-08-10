@@ -1,0 +1,91 @@
+================================================================================
+                    MEDINIPUR TUTOR - PROJECT & HTML RECORD
+================================================================================
+Project Owner : Mithun Patra
+Weekly Review : Every Saturday
+Framework     : Django (Python)
+
+--------------------------------------------------------------------------------
+1. HTML TEMPLATES SUMMARY & QUICK REFERENCE
+--------------------------------------------------------------------------------
+
+[1] home.html
+    - URL Path   : /
+    - URL Name   : 'home'
+    - View Func  : home()
+    - Purpose    : Landing page with hero banner, quick search bar, and 
+                   featured listings.
+
+[2] teachers_list.html
+    - URL Path   : /teachers/
+    - URL Name   : 'teachers'
+    - View Func  : teacher_list()
+    - Purpose    : Dedicated directory displaying all registered tutors with 
+                   verified badges, filtering, contact buttons, & actions.
+
+[3] teacher_detail.html
+    - URL Path   : /teacher/<id>/
+    - URL Name   : 'teacher_detail'
+    - View Func  : teacher_detail()
+    - Purpose    : Detailed profile page for a single teacher (qualification, 
+                   fees, full subject breakdown, location).
+
+[4] add_teacher.html
+    - URL Path   : /add_teacher/
+    - URL Name   : 'add_teacher'
+    - View Func  : add_teacher()
+    - Purpose    : Form page allowing new teachers to register. 
+                   (Saves to Database & updates teachers.xlsx).
+
+[5] edit_teacher.html
+    - URL Path   : /edit_teacher/<id>/
+    - URL Name   : 'edit_teacher'
+    - View Func  : edit_teacher()
+    - Purpose    : Update existing teacher profiles (Requires phone verification).
+
+[6] delete_confirm.html
+    - URL Path   : /delete_teacher/<id>/
+    - URL Name   : 'delete_teacher'
+    - View Func  : delete_teacher()
+    - Purpose    : Confirmation prompt before removing a teacher entry 
+                   (Requires phone verification).
+
+[7] messpg_list.html
+    - URL Path   : /messpg/
+    - URL Name   : 'messpg_list'
+    - View Func  : messpg_list()
+    - Purpose    : Directory of all available Mess & PG listings across districts.
+
+[8] add_messpg.html
+    - URL Path   : /add_messpg/
+    - URL Name   : 'add_messpg'
+    - View Func  : add_messpg()
+    - Purpose    : Form page allowing PG/Mess owners to submit their property.
+
+[9] mess_detail.html
+    - URL Path   : /mess/<id>/
+    - URL Name   : 'mess_details'
+    - View Func  : mess_details()
+    - Purpose    : View specific PG/Mess details & dynamically increment 
+                   view count in database.
+
+--------------------------------------------------------------------------------
+2. SATURDAY MAINTENANCE & REVIEW CHECKLIST
+--------------------------------------------------------------------------------
+[ ] 1. Run server test: `python manage.py runserver`
+[ ] 2. Check if all menu links (Home, Teachers, Mess/PG) navigate without errors.
+[ ] 3. Test teacher registration form (/add_teacher/).
+[ ] 4. Verify that `teachers.xlsx` is properly updating on new additions.
+[ ] 5. Test search filters on `home.html` and `teachers_list.html`.
+[ ] 6. Test phone number verification on edit and delete views.
+[ ] 7. Commit changes to Git: `git commit -m "Saturday review updates"`
+
+--------------------------------------------------------------------------------
+3. WEEKLY WORK LOG / NOTES
+--------------------------------------------------------------------------------
+Date        | Status / Changes Made
+------------|-------------------------------------------------------------------
+YYYY-MM-DD  | Added teachers_list.html and fixed URL routing name='teachers'
+YYYY-MM-DD  | Fixed typo in views.py (location filter)
+            | 
+================================================================================
