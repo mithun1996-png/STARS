@@ -3,304 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Mess / PG</title>
+    <meta name="author" content="Dr. Mithun Patra, Astronomy & Space Researcher, NISER, India">
+    <meta name="description" content="List your Mess or PG accommodation on QPhysics Academy - Reach students across Medinipur.">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <title>QPhysics Academy | Add Mess / PG Listing</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#070c1e',
+                            navy: '#0f172a',
+                            card: '#1e293b',
+                            blue: '#2563eb',
+                            sky: '#0284c7',
+                            gold: '#fbbf24',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 26s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        header {
-            /* This adds a dark overlay so your white text stays perfectly readable over the image */
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(76, 161, 175, 0.8)), 
-                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200') no-repeat center center;
-            background-size: cover; /* Forces the image to fit the entire header area nicely */
-            color: white;
-            padding: 40px 20px; /* Increased padding to give the background image more breathing room */
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #eef2f3, #dfe9f3);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 15px;
-            color: #333;
-        }
-
-        /* Premium Form Container Card */
-        .form-container {
-            width: 100%;
-            max-width: 750px;
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .top-section {
-            text-align: center;
-            margin-bottom: 35px;
-            border-bottom: 2px solid #f5f6fa;
-            padding-bottom: 20px;
-        }
-
-        .top-section h1 {
-            color: #2c3e50;
-            font-size: 32px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .top-section p {
-            color: #7f8c8d;
-            font-size: 15px;
-        }
-
-        /* Grid Layout for compact field grouping */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        /* Force specific items to take full width inside the grid */
-        .full-width {
-            grid-column: span 2;
-        }
-
-        .input-group {
-            margin-bottom: 5px;
-        }
-
-        label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #34495e;
-            font-size: 14px;
-        }
-
-        label i {
-            color: #3498db;
-            font-size: 14px;
-            width: 16px;
-            text-align: center;
-        }
-
-        input,
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #dcdde1;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-            background: #fdfdfd;
-            color: #2c3e50;
-        }
-
-        input:focus,
-        textarea:focus,
-        select:focus {
-            border-color: #3498db;
-            background: white;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
-        }
-
-        /* Custom styling for file input field */
-        input[type="file"] {
-            padding: 8px 12px;
-            background: #f8f9fa;
-            cursor: pointer;
-        }
-
-        textarea {
-            resize: none;
-            height: 110px;
-        }
-
-        /* Action Buttons Wrapper */
-        .action-group {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.35);
-        }
-
-        .cancel-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: #7f8c8d;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: 0.2s;
-        }
-
-        .cancel-link:hover {
-            color: #c0392b;
-        }
-
-        .note {
-            text-align: center;
-            margin-top: 20px;
-            color: #95a5a6;
-            font-size: 12px;
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 768px) {
-            .form-container {
-                padding: 25px 20px;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr; /* Stack everything vertically on tablets/phones */
-                gap: 15px;
-            }
-
-            .full-width {
-                grid-column: span 1;
-            }
-
-            .top-section h1 {
-                font-size: 26px;
-            }
-        }
-    </style>
 </head>
 
-<body>
+<body class="bg-brand-navy text-slate-100 font-sans antialiased selection:bg-brand-blue selection:text-white min-h-screen flex flex-col justify-between">
 
-    <div class="form-container">
+    <div>
+        <!-- 1. HEADER BRANDING -->
+        <header class="relative bg-cover bg-center bg-fixed py-14 px-4 text-center overflow-hidden border-b border-slate-800"
+                style="background-image: linear-gradient(135deg, rgba(7, 12, 30, 0.92) 0%, rgba(15, 23, 42, 0.88) 50%, rgba(37, 99, 235, 0.75) 100%), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2000&auto=format&fit=crop');">
+            
+            <h1 class="font-outfit text-4xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300 drop-shadow-lg">
+                QPhysics Academy
+            </h1>
+            
+            <div class="mt-3">
+                <span class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-gold bg-amber-500/10 border border-amber-500/30 px-4 py-1.5 rounded-full backdrop-blur-md shadow-inner transition hover:bg-amber-500/20 hover:scale-105">
+                    <i class="fa-solid fa-code"></i> Founded & Developed by <strong class="text-white">Dr. Mithun Patra</strong>
+                </span>
+            </div>
+            
+            <p class="mt-2 text-xs sm:text-sm text-slate-400 font-medium tracking-wide uppercase">
+                Astronomy & Space Researcher, NISER, India
+            </p>
+        </header>
 
-        <div class="top-section">
-            <h1>Add Your Mess / PG</h1>
-            <p>Reach students across Medinipur with your accommodation listing</p>
+        <!-- 2. NAVIGATION BAR -->
+        <nav class="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10 px-4 py-3 shadow-2xl">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2 text-sm font-medium">
+                <a href="{% url 'home' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-house"></i> Home
+                </a>
+                <a href="{% url 'teachers' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-chalkboard-user"></i> Teachers
+                </a>
+                <a href="{% url 'messpg_list' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-blue text-white font-semibold shadow-lg shadow-blue-500/30 transition hover:bg-blue-600">
+                    <i class="fa-solid fa-bed"></i> Mess / PG
+                </a>
+                <a href="{% url 'information' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-circle-info"></i> Information
+                </a>
+                <a href="{% url 'reviews' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-star"></i> Reviews
+                </a>
+                <a href="{% url 'add_teacher' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-user-plus"></i> Become a Teacher
+                </a>
+            </div>
+        </nav>
+
+        <!-- 3. RUNNING NOTIFICATION TICKER -->
+        <div class="bg-gradient-to-r from-sky-800 to-sky-600 text-white flex items-center overflow-hidden border-b border-sky-500/20 shadow-inner">
+            <div class="bg-sky-900 px-5 py-2.5 font-outfit font-bold text-xs uppercase tracking-wider whitespace-nowrap z-10 flex items-center gap-2 shadow-lg">
+                <i class="fa-solid fa-bolt text-sky-300 animate-bounce"></i> Updates
+            </div>
+            <div class="w-full overflow-hidden whitespace-nowrap">
+                <div class="inline-block whitespace-nowrap pl-[100%] animate-marquee hover:[animation-play-state:paused]">
+                    <span class="inline-flex items-center gap-2 mr-12 text-xs sm:text-sm font-medium">
+                        <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider">NEW</span>
+                        New Teacher Profile Added: Mathematics Specialist in Paschim Medinipur! 
+                        <a href="{% url 'teachers' %}" class="text-yellow-300 font-semibold underline underline-offset-2 ml-1 hover:text-white">Review Details &rarr;</a>
+                    </span>
+                    <span class="inline-flex items-center gap-2 mr-12 text-xs sm:text-sm font-medium">
+                        <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider">UPDATED</span>
+                        Sunrise Boys Mess updated room availability & pricing. 
+                        <a href="{% url 'messpg_list' %}" class="text-yellow-300 font-semibold underline underline-offset-2 ml-1 hover:text-white">Review Details &rarr;</a>
+                    </span>
+                    <span class="inline-flex items-center gap-2 mr-12 text-xs sm:text-sm font-medium">
+                        <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider">NOTICE</span>
+                        Teacher registrations are currently open across Paschim & Purba Medinipur. 
+                        <a href="{% url 'add_teacher' %}" class="text-yellow-300 font-semibold underline underline-offset-2 ml-1 hover:text-white">Register Now &rarr;</a>
+                    </span>
+                </div>
+            </div>
         </div>
 
-        <form method="POST" enctype="multipart/form-data">
+        <!-- MAIN CONTAINER -->
+        <main class="max-w-4xl mx-auto px-4 py-12">
 
-            {% csrf_token %}
+            <!-- PAGE HERO -->
+            <section class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="font-outfit text-3xl sm:text-4xl font-extrabold leading-tight text-white">
+                    Add Your <span class="bg-gradient-to-r from-blue-400 to-sky-400 bg-clip-text text-transparent">Mess / PG Listing</span>
+                </h2>
+                <p class="text-slate-400 mt-2 text-sm sm:text-base">
+                    Reach students across Medinipur with your accommodation property listing
+                </p>
+            </section>
 
-            <div class="form-grid">
-                
-                <div class="input-group full-width">
-                    <label><i class="fa-solid fa-hotel"></i> Mess / PG Name</label>
-                    <input type="text" name="name" placeholder="e.g. Sunrise Elite Boys Hostel" required>
-                </div>
+            <!-- FORM CARD -->
+            <div class="bg-brand-card p-6 sm:p-10 rounded-2xl border border-slate-700/80 shadow-2xl relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-40 h-40 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                <div class="input-group full-width">
-                    <label><i class="fa-solid fa-user-tie"></i> Owner Name</label>
-                    <input type="text" name="owner_name" placeholder="Enter full name" required>
-                </div>
+                <form method="POST" enctype="multipart/form-data" class="space-y-6">
+                    {% csrf_token %}
 
-                <div class="input-group">
-                    <label><i class="fa-solid fa-map-location-dot"></i> District</label>
-                    <select name="district" required>
-                        <option value="">Select District</option>
-                        <option>Paschim Medinipur</option>
-                        <option>Purba Medinipur</option>
-                    </select>
-                </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-                <div class="input-group">
-                    <label><i class="fa-solid fa-location-crosshairs"></i> Location / Landmark</label>
-                    <input type="text" name="location" placeholder="e.g. Near Vidyasagar University" required>
-                </div>
+                        <!-- MESS / PG NAME -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-semibold text-slate-200 mb-2">
+                                <i class="fa-solid fa-hotel text-brand-blue mr-1.5"></i> Mess / PG Name <span class="text-rose-400">*</span>
+                            </label>
+                            <input type="text" name="name" required placeholder="e.g. Sunrise Elite Boys Hostel"
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 text-sm focus:ring-2 focus:ring-brand-blue focus:border-brand-blue focus:outline-none transition placeholder-slate-500">
+                        </div>
 
-                <div class="input-group">
-                    <label><i class="fa-solid fa-indian-rupee-sign"></i> Monthly Rent (₹)</label>
-                    <input type="number" name="rent" placeholder="Monthly rent fee" required>
-                </div>
+                        <!-- OWNER NAME -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-semibold text-slate-200 mb-2">
+                                <i class="fa-solid fa-user-tie text-brand-blue mr-1.5"></i> Owner Name <span class="text-rose-400">*</span>
+                            </label>
+                            <input type="text" name="owner_name" required placeholder="Enter full name"
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 text-sm focus:ring-2 focus:ring-brand-blue focus:border-brand-blue focus:outline-none transition placeholder-slate-500">
+                        </div>
 
-                <div class="input-group">
-                    <label><i class="fa-solid fa-utensils"></i> Food Availability</label>
-                    <select name="food_available" required>
-                        <option value="">Select Option</option>
-                        <option>Available</option>
-                        <option>Not Available</option>
-                    </select>
-                </div>
+                        <!-- DISTRICT -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-200 mb-2">
+                                <i class="fa-solid fa-map-location-dot text-brand-blue mr-1.5"></i> District <span class="text-rose-400">*</span>
+                            </label>
+                            <select name="district" required
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 text-sm focus:ring-2 focus:ring-brand-blue focus:border-brand-blue focus:outline-none transition">
+                                <option value="">Select District</option>
+                                <option>Paschim Medinipur</option>
+                                <option>Purba Medinipur</option>
+                            </select>
+                        </div>
 
-                <div class="input-group">
-                    <label><i class="fa-solid fa-phone"></i> WhatsApp Contact Number</label>
-                    <input type="tel" name="phone" placeholder="10-digit mobile number" required>
-                </div>
+                        <!-- LOCATION / LANDMARK -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-200 mb-2">
+                                <i class="fa-solid fa-location-crosshairs text-brand-blue mr-1.5"></i> Location / Landmark <span class="text-rose-400">*</span>
+                            </label>
+                            <input type="text" name="location" required placeholder="e.g. Near Vidyasagar University"
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 text-sm focus:ring-2 focus:ring-brand-blue focus:border-brand-blue focus:outline-none transition placeholder-slate-500">
+                        </div>
 
-                <div class="input-group">
-                    <label><i class="fa-solid fa-camera"></i> Accommodation Photo</label>
-                    <input type="file" name="image" accept="image/*">
-                </div>
+                        <!-- MONTHLY RENT -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-200 mb-2">
+                                <i class="fa-solid fa-indian-rupee-sign text-brand-blue mr-1.5"></i> Monthly Rent (₹) <span class="text-rose-400">*</span>
+                            </label>
+                            <input type="number" name="rent" required placeholder="e.g. 2500"
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 text-sm focus:ring-2 focus:ring-brand-blue focus:border-brand-blue focus:outline-none transition placeholder-slate-500">
+                        </div>
 
-                <div class="input-group full-width">
-                    <label><i class="fa-solid fa-align-left"></i> Description & Facilities</label>
-                    <textarea name="description" placeholder="Specify room sharing capacity, Wi-Fi availability, water/power supply configurations, rules, etc."></textarea>
-                </div>
+                        <!-- FOOD AVAILABILITY -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-200 mb-2">
+                                <i class="fa-solid fa-utensils text-brand-blue mr-1.5"></i> Food Availability <span class="text-rose-400">*</span>
+                            </label>
+                            <select name="food_available" required
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 text-sm focus:ring-2 focus:ring-brand-blue focus:border-brand-blue focus:outline-none transition">
+                                <option value="">Select Option</option>
+                                <option>Available</option>
+                                <option>Not Available</option>
+                            </select>
+                        </div>
 
+                        <!-- WHATSAPP NUMBER -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-200 mb-2">
+                                <i class="fa-solid fa-phone text-brand-blue mr-1.5"></i> WhatsApp Contact Number <span class="text-rose-400">*</span>
+                            </label>
+                            <input type="tel" name="phone" required placeholder="10-digit mobile number"
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 text-sm focus:ring-2 focus:ring-brand-blue focus:border-brand-blue focus:outline-none transition placeholder-slate-500">
+                        </div>
+
+                        <!-- IMAGE FILE UPLOAD -->
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-200 mb-2">
+                                <i class="fa-solid fa-camera text-brand-blue mr-1.5"></i> Accommodation Photo
+                            </label>
+                            <input type="file" name="image" accept="image/*"
+                                class="block w-full text-xs text-slate-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-brand-blue hover:file:bg-slate-700 border border-slate-700 rounded-xl bg-slate-900 cursor-pointer">
+                            <span class="text-[11px] text-slate-500 mt-1 block">Recommended size: High quality JPG or PNG</span>
+                        </div>
+
+                        <!-- DESCRIPTION & FACILITIES -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-semibold text-slate-200 mb-2">
+                                <i class="fa-solid fa-align-left text-brand-blue mr-1.5"></i> Description & Facilities
+                            </label>
+                            <textarea name="description" rows="4" placeholder="Specify room sharing capacity, Wi-Fi availability, water/power supply configurations, rules, etc."
+                                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-100 text-sm focus:ring-2 focus:ring-brand-blue focus:border-brand-blue focus:outline-none transition placeholder-slate-500 resize-none"></textarea>
+                        </div>
+
+                    </div>
+
+                    <!-- ACTION BUTTONS -->
+                    <div class="pt-4 space-y-3 text-center">
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-outfit font-bold text-base py-3.5 px-6 rounded-xl transition duration-200 shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Publish Property Listing
+                        </button>
+                        
+                        <a href="{% url 'messpg_list' %}" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-rose-400 transition py-1">
+                            <i class="fa-solid fa-xmark"></i> Cancel and Go Back
+                        </a>
+                    </div>
+
+                    <p class="text-center text-xs text-slate-400 mt-4">
+                        <i class="fa-solid fa-shield-halved text-brand-blue mr-1"></i> Your submission is immediately cataloged and will appear live under active student searches.
+                    </p>
+
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER WITH AFFILIATION & CREDENTIALS -->
+    <footer class="bg-brand-dark border-t-2 border-brand-blue text-center py-12 px-4 mt-20">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="font-outfit text-2xl font-bold text-white mb-1">QPhysics Academy</h3>
+            <p class="text-slate-400 text-sm mb-6">Connecting Students, Tutors & Accommodations across Medinipur</p>
+
+            <div class="w-full h-px bg-slate-800 my-6"></div>
+
+            <!-- DEVELOPER & ACADEMIC CREDENTIALS -->
+            <div class="mb-6 space-y-1.5">
+                <p class="text-sm font-semibold text-brand-gold">
+                    Designed, Maintained & Developed by Dr. Mithun Patra
+                </p>
+                <p class="text-xs text-slate-300 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-sky-400"></i> <strong>Ph.D. in Physics / Astronomy & Space Sciences</strong>
+                </p>
+                <p class="text-xs text-slate-300 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-building-columns text-sky-400"></i> <strong>Affiliation:</strong> National Institute of Science Education and Research (NISER), Odisha, India
+                </p>
             </div>
 
-            <div class="action-group">
-                <button type="submit" class="submit-btn">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> Publish Property Listing
-                </button>
-                <br>
-                <a href="/messpg/" class="cancel-link">
-                    <i class="fa-solid fa-xmark"></i> Cancel and Go Back
+            <div class="flex items-center justify-center gap-4 my-6">
+                <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:bg-brand-blue hover:text-white transition hover:-translate-y-1">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:bg-brand-blue hover:text-white transition hover:-translate-y-1">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:bg-brand-blue hover:text-white transition hover:-translate-y-1">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:bg-brand-blue hover:text-white transition hover:-translate-y-1">
+                    <i class="fa-brands fa-instagram"></i>
                 </a>
             </div>
 
-        </form>
-
-        <p class="note">
-            * Your submission is immediately cataloged and will appear live under active student searches.
-        </p>
-
-    </div>
+            <p class="text-xs text-slate-500">&copy; 2026 <strong>QPhysics Academy</strong>. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>

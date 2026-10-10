@@ -4,6 +4,12 @@ from .models import Teacher, MessPG
 import os
 from django.db.models import F 
 from openpyxl import Workbook, load_workbook
+from django.db.models import Case, When, Value, IntegerField
+import razorpay
+from django.conf import settings
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 # Home page view 
 def home(request):
     teachers = Teacher.objects.all()
@@ -20,21 +26,32 @@ def home(request):
 
     return render(request, 'home.html', {'teachers': teachers})
 
+def information(request):
+    return render(request, 'information.html')
+def reviews(request):
+    return render(request, 'reviews.html')  # or return render(request, 'home.html') temporarily
 # DEDICATED TEACHERS LIST VIEW 
+# views.py
+from django.shortcuts import render
+from .models import Teacher
+
 def teacher_list(request):
-    teachers = Teacher.objects.all()
-    subject = request.GET.get('subject')
-    district = request.GET.get('district')
-    classes = request.GET.get('classes')
-    # Apply search filters for the teachers directory page 
-    if subject:
-        teachers = teachers.filter(subject = subject)
-    if district:
-        teachers = teachers.filter(location__icontains=district)
-    if classes:
-        teachers = teachers.filter(classes = classes)
-    
-    # renders the dedicated teachers directory page with the filtered list of teachers
+    teachers = Teacher.objects.annotate(
+        # Assign numeric weights so Premium (3) > Pro (2) > Free (1)
+        tier_weight=Case(
+            When(membership_tier='premium', then=Value(3)),
+            When(membership_tier='pro', then=Value(2)),
+            When(membership_tier='free', then=Value(1)),
+            default=Value(1),
+            output_field=IntegerField(),
+        )
+    ).order_by(
+        '-is_featured',   # 1st: Featured profiles first (True before False)
+        '-tier_weight',   # 2nd: Premium (3) -> Pro (2) -> Free (1)
+        '-rating',        # 3rd: Highest rated tutors first
+        '-id'             # 4th: Newer profiles first
+    )
+
     return render(request, 'teacher_list.html', {'teachers': teachers})
 
 # Add teacher 
@@ -170,4 +187,82 @@ def learning_matlab(request):
     return render(request, 'matlab.html')
 
 def learning_latex(request):
+    return render(request, 'latex.html')
+
+
+client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+
+def initiate_upi_payment(request):
+    # Amount in paise (₹299 = 29900 paise)
+    amount = 29900 
+    
+    order_data = {
+        'amount': amount,
+        'currency': 'INR',
+        'payment_capture': '1'
+    }
+    
+    order = client.order.create(data=order_data)
+    
+    context = {
+        'order_id': order['id'],
+        'amount': amount,
+        'razorpay_key': settings.RAZORPAY_KEY_ID,
+        'user_name': request.user.get_full_name() if request.user.is_authenticated else "Student",
+    }
+    return render(request, 'upi_payment.html', context)
+
+@csrf_exempt
+def payment_success(request):
+    if request.method == "POST":
+        data = request.POST
+        try:
+            # Verify signature to prevent tampering
+            client.utility.verify_payment_signature({
+                'razorpay_order_id': data.get('razorpay_order_id'),
+                'razorpay_payment_id': data.get('razorpay_payment_id'),
+                'razorpay_signature': data.get('razorpay_signature')
+            })
+            
+            # TODO: Update your Teacher / Subscription model status to "ACTIVE" here
+            
+            return JsonResponse({'status': 'Payment Successful'})
+        except razorpay.errors.SignatureVerificationError:
+            return JsonResponse({'status': 'Payment Verification Failed'}, status=400)
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from .models import Teacher
+
+def submit_upi_utr(request, teacher_id):
+    teacher = get_object_or_404(Teacher, id=teacher_id)
+    
+    if request.method == "POST":
+        utr_number = request.POST.get("utr_number", "").strip()
+        selected_plan = request.POST.get("membership_tier", "pro")
+
+        # Validate UTR length (12 digits for Indian UPI transactions)
+        if len(utr_number) == 12 and utr_number.isdigit():
+            teacher.utr_number = utr_number
+            teacher.membership_tier = selected_plan
+            teacher.payment_status = 'pending'  # Awaits admin verification
+            teacher.save()
+
+            messages.success(request, "Your payment UTR was submitted successfully! Profile will be activated after quick verification.")
+            return redirect('teacher_detail', pk=teacher.id)
+        else:
+            messages.error(request, "Please enter a valid 12-digit UPI Transaction/UTR reference number.")
+            
+    return render(request, "submit_utr.html", {"teacher": teacher})
+
+def python_page(request):
+    return render(request, 'python.html')
+
+def html_page(request):
+    return render(request, 'html.html')
+
+def matlab_page(request):
+    return render(request, 'matlab.html')
+
+def latex_page(request):
     return render(request, 'latex.html')

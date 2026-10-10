@@ -4,733 +4,397 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Dr. Mithun Patra, Astronomy & Space Researcher, NISER, India">
-    <meta name="description" content="Shiksha Sadan - Verified Tutors Directory across Medinipur.">
-    <meta name="keywords" content="Shiksha Sadan, Medinipur Tutors, Teachers Directory, Tuition, Education Medinipur">
+    <meta name="description" content="QPhysics Academy - Verified Tutors Directory across Medinipur.">
+    <meta name="keywords" content="QPhysics Academy, Medinipur Tutors, Teachers Directory, Tuition, Education Medinipur">
 
-    <title>Shiksha Sadan | All Teachers Directory</title>
+    <title>QPhysics Academy | All Teachers Directory</title>
 
-    <!-- Google Fonts (Outfit & Inter) & FontAwesome -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#070c1e',
+                            navy: '#0f172a',
+                            card: '#1e293b',
+                            blue: '#2563eb',
+                            sky: '#0284c7',
+                            gold: '#fbbf24',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 26s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        :root {
-            --primary: #0f172a;
-            --primary-light: #1e293b;
-            --secondary: #2563eb;
-            --secondary-hover: #1d4ed8;
-            --accent-gold: #f59e0b;
-            --accent-teal: #0d9488;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --bg-light: #f8fafc;
-            --card-bg: #ffffff;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
-            --shadow-lg: 0 12px 30px -4px rgba(15, 23, 42, 0.12);
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        h1, h2, h3, h4, .brand-title {
-            font-family: 'Outfit', sans-serif;
-            letter-spacing: -0.02em;
-        }
-
-        /* 1. HEADER BRANDING */
-        header {
-            background: linear-gradient(135deg, #0b1329 0%, #1e293b 50%, #1d4ed8 100%);
-            color: white;
-            text-align: center;
-            padding: 50px 20px 45px;
-            box-shadow: var(--shadow-md);
-            position: relative;
-        }
-
-        header h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        }
-
-        header .founder-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            color: #fbbf24;
-            font-weight: 600;
-            background: rgba(251, 191, 36, 0.12);
-            padding: 6px 16px;
-            border-radius: 30px;
-            border: 1px solid rgba(251, 191, 36, 0.25);
-            margin-top: 6px;
-            letter-spacing: 0.2px;
-        }
-
-        header .subtitle {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            font-weight: 400;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        /* 2. NAVIGATION */
-        nav {
-            background: #090d16;
-            padding: 10px 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 8px 18px;
-            border-radius: 8px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        nav a:hover, nav a.active {
-            color: #ffffff;
-            background: var(--secondary);
-            font-weight: 600;
-            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
-        }
-
-        /* 3. RUNNING NOTIFICATION TICKER */
-        .notification-bar {
-            background: #0284c7;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .notification-label {
-            background: #0369a1;
-            color: #ffffff;
-            padding: 10px 20px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 4px 0 12px rgba(0,0,0,0.15);
-        }
-
-        .notification-ticker {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .ticker-content {
-            display: inline-block;
-            white-space: nowrap;
-            padding-left: 100%;
-            animation: marquee 26s linear infinite;
-        }
-
-        .ticker-content:hover {
-            animation-play-state: paused;
-        }
-
-        .ticker-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-right: 50px;
-            font-size: 0.88rem;
-            font-weight: 500;
-        }
-
-        .ticker-item a {
-            color: #fef08a;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.15);
-            transition: var(--transition);
-        }
-
-        .ticker-item a:hover {
-            background: #ffffff;
-            color: #0369a1;
-        }
-
-        .badge-new {
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.68rem;
-            padding: 2px 7px;
-            border-radius: 4px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        @keyframes marquee {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
-        }
-
-        /* MAIN CONTAINER */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 45px 0 60px;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            text-align: center;
-            padding: 10px 0 35px 0;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1.25;
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeUp 0.7s ease forwards;
-        }
-
-        .hero span {
-            color: var(--secondary);
-            background: linear-gradient(135deg, #2563eb, #0284c7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            margin-top: 10px;
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 4. SEARCH & FILTER */
-        .filter-box {
-            background: var(--card-bg);
-            padding: 28px;
-            margin-bottom: 40px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .filter-box form {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .filter-box select, .filter-box input[type="text"] {
-            padding: 13px 18px;
-            border-radius: 10px;
-            border: 1px solid #cbd5e1;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            outline: none;
-            background-color: #f8fafc;
-            min-width: 180px;
-            flex: 1;
-            transition: var(--transition);
-        }
-
-        .filter-box select:focus, .filter-box input[type="text"]:focus {
-            border-color: var(--secondary);
-            background-color: #fff;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
-        }
-
-        .btn-search {
-            padding: 13px 28px;
-            background: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-            text-decoration: none;
-        }
-
-        .btn-search:hover {
-            background: var(--secondary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
-        }
-
-        /* ACTION BAR ABOVE CARDS */
-        .action-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .action-bar h3 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        /* CARD GRIDS */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 28px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 26px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-color: #cbd5e1;
-        }
-
-        .card-header a {
-            text-decoration: none;
-            color: var(--primary);
-        }
-
-        .card-header h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            transition: var(--transition);
-        }
-
-        .card-header h3:hover {
-            color: var(--secondary);
-        }
-
-        .card-body p {
-            margin: 10px 0;
-            color: #334155;
-            font-size: 0.92rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 400;
-        }
-
-        .card-body p b {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .card-body p i {
-            color: var(--secondary);
-            width: 18px;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        .card-actions {
-            margin-top: 22px;
-            padding-top: 16px;
-            border-top: 1px solid #f1f5f9;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        /* BUTTON STYLES */
-        .btn {
-            padding: 9px 16px;
-            border-radius: 8px;
-            border: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: var(--transition);
-        }
-
-        .btn-contact {
-            background: var(--success);
-            color: white;
-            flex: 1;
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
-        }
-
-        .btn-contact:hover {
-            background: #059669;
-            transform: translateY(-1px);
-        }
-
-        .btn-edit {
-            background: #fffbe2;
-            color: #d97706;
-            border: 1px solid #fde68a;
-        }
-
-        .btn-edit:hover {
-            background: #f59e0b;
-            color: white;
-        }
-
-        .btn-delete {
-            background: #fef2f2;
-            color: var(--danger);
-            border: 1px solid #fecaca;
-        }
-
-        .btn-delete:hover {
-            background: var(--danger);
-            color: white;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            grid-column: 1 / -1;
-            box-shadow: var(--shadow-sm);
-            border: 1px dashed #cbd5e1;
-        }
-
-        .empty-state h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .empty-state p {
-            color: var(--text-muted);
-            margin-bottom: 22px;
-            font-size: 0.95rem;
-        }
-
-        /* 9. FOOTER BRANDING WITH ACADEMIC CREDENTIALS */
-        footer {
-            background: #090d16;
-            color: #cbd5e1;
-            text-align: center;
-            padding: 50px 20px 35px;
-            margin-top: 70px;
-            border-top: 3px solid var(--secondary);
-        }
-
-        footer h3 {
-            font-size: 1.5rem;
-            color: #ffffff;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-
-        footer .social-icons {
-            margin: 22px 0;
-        }
-
-        footer .social-icons a {
-            color: #cbd5e1;
-            font-size: 1.25rem;
-            margin: 0 10px;
-            transition: var(--transition);
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-        }
-
-        footer .social-icons a:hover {
-            color: #ffffff;
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            .hero h2 { font-size: 1.85rem; }
-            .filter-box select, .filter-box input[type="text"] { width: 100%; }
-        }
-    </style>
 </head>
 
-<body>
+<body class="bg-brand-navy text-slate-100 font-sans antialiased selection:bg-brand-blue selection:text-white min-h-screen">
 
-<header>
-    <h1 class="brand-title">Shiksha Sadan</h1>
-    <div>
-        <span class="founder-badge">
-            <i class="fa-solid fa-code"></i> Founded & Developed by <strong>Dr. Mithun Patra</strong>
-        </span>
-    </div>
-    <p class="subtitle">Astronomy & Space Researcher, NISER, India</p>
-</header>
-
-<nav>
-    <a href="/"><i class="fa-solid fa-house"></i> Home</a>
-    <a href="{% url 'teachers' %}" class="active"><i class="fa-solid fa-chalkboard-user"></i> Teachers</a>
-    <a href="{% url 'messpg_list' %}"><i class="fa-solid fa-bed"></i> Mess / PG</a>
-    <a href="/information/"><i class="fa-solid fa-circle-info"></i> Information</a>
-    <a href="/reviews/"><i class="fa-solid fa-star"></i> Reviews</a>
-    <a href="{% url 'add_teacher' %}"><i class="fa-solid fa-user-plus"></i> Become a Teacher</a>
-</nav>
-
-<!-- RUNNING NOTIFICATION TICKER -->
-<div class="notification-bar">
-    <div class="notification-label">
-        <i class="fa-solid fa-bolt fa-bounce"></i> Updates
-    </div>
-    <div class="notification-ticker">
-        <div class="ticker-content">
-            <span class="ticker-item">
-                <span class="badge-new">NEW</span> 
-                New Teacher Profile Added: Mathematics Specialist in Paschim Medinipur! 
-                <a href="{% url 'teachers' %}">Review Details &rarr;</a>
-            </span>
-            <span class="ticker-item">
-                <span class="badge-new">UPDATED</span> 
-                Sunrise Boys Mess updated room availability & pricing. 
-                <a href="{% url 'messpg_list' %}">Review Details &rarr;</a>
-            </span>
-            <span class="ticker-item">
-                <span class="badge-new">NOTICE</span> 
-                Teacher registrations are currently open across Paschim & Purba Medinipur. 
-                <a href="{% url 'add_teacher' %}">Register Now &rarr;</a>
-            </span>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-
-    <!-- HERO SECTION -->
-    <div class="hero">
-        <h2>Find Expert <span>Tutors & Educators</span> in Medinipur</h2>
-        <p>Browse verified teacher profiles across subject specialties and academic levels</p>
-    </div>
-
-    <!-- SEARCH & FILTER FORM -->
-    <div class="filter-box">
-        <form method="GET" action="{% url 'teachers' %}">
-            <select name="level" aria-label="Select Level">
-                <option value="">All Academic Levels</option>
-                <option value="Secondary" {% if request.GET.level == 'Secondary' %}selected{% endif %}>Secondary</option>
-                <option value="Higher Secondary" {% if request.GET.level == 'Higher Secondary' %}selected{% endif %}>Higher Secondary</option>
-            </select>
-
-            <select name="classes" aria-label="Select Class">
-                <option value="">All Classes</option>
-                <option value="5" {% if request.GET.classes == '5' %}selected{% endif %}>Class 5</option>
-                <option value="6" {% if request.GET.classes == '6' %}selected{% endif %}>Class 6</option>
-                <option value="7" {% if request.GET.classes == '7' %}selected{% endif %}>Class 7</option>
-                <option value="8" {% if request.GET.classes == '8' %}selected{% endif %}>Class 8</option>
-                <option value="9" {% if request.GET.classes == '9' %}selected{% endif %}>Class 9</option>
-                <option value="10" {% if request.GET.classes == '10' %}selected{% endif %}>Class 10</option>
-                <option value="11" {% if request.GET.classes == '11' %}selected{% endif %}>Class 11</option>
-                <option value="12" {% if request.GET.classes == '12' %}selected{% endif %}>Class 12</option>
-            </select>
-
-            <select name="district" aria-label="Select District">
-                <option value="">All Districts</option>
-                <option value="Paschim Medinipur" {% if request.GET.district == 'Paschim Medinipur' %}selected{% endif %}>Paschim Medinipur</option>
-                <option value="Purba Medinipur" {% if request.GET.district == 'Purba Medinipur' %}selected{% endif %}>Purba Medinipur</option>
-            </select>
-
-            <select name="subject" aria-label="Select Subject">
-                <option value="">All Subjects</option>
-                <option value="Mathematics" {% if request.GET.subject == 'Mathematics' %}selected{% endif %}>Mathematics</option>
-                <option value="Physical Science" {% if request.GET.subject == 'Physical Science' %}selected{% endif %}>Physical Science</option>
-                <option value="Life Science" {% if request.GET.subject == 'Life Science' %}selected{% endif %}>Life Science</option>
-                <option value="English" {% if request.GET.subject == 'English' %}selected{% endif %}>English</option>
-                <option value="Bengali" {% if request.GET.subject == 'Bengali' %}selected{% endif %}>Bengali</option>
-                <option value="History" {% if request.GET.subject == 'History' %}selected{% endif %}>History</option>
-                <option value="Geography" {% if request.GET.subject == 'Geography' %}selected{% endif %}>Geography</option>
-                <option value="Computer Science" {% if request.GET.subject == 'Computer Science' %}selected{% endif %}>Computer Science</option>
-            </select>
-
-            <button type="submit" class="btn-search">
-                <i class="fa-solid fa-magnifying-glass"></i> Filter Tutors
+    <!-- ================= 0. MONETIZATION POPUP MODAL ================= -->
+    <div id="pricingModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity duration-300">
+        <div class="relative bg-brand-navy border border-slate-700/80 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8">
+            
+            <!-- Close Button -->
+            <button onclick="closePricingModal()" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-full w-10 h-10 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-        </form>
-    </div>
 
-    <!-- ACTION HEADER BAR -->
-    <div class="action-bar">
-        <h3><i class="fa-solid fa-chalkboard-user" style="color: var(--secondary);"></i> Teacher Profiles Directory</h3>
-        <a href="{% url 'add_teacher' %}" class="btn-search" style="font-size: 0.88rem; padding: 10px 18px;">
-            <i class="fa-solid fa-user-plus"></i> Register as a Teacher
-        </a>
-    </div>
-
-    <!-- TEACHERS GRID -->
-    <div class="grid">
-        {% if teachers %}
-            {% for teacher in teachers %}
-                <div class="card">
-                    <div class="card-header">
-                        <a href="{% url 'teacher_detail' teacher.id %}">
-                            <h3>{{ teacher.name }}</h3>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <p><i class="fa-solid fa-book-open"></i> <span><b>Subject:</b> {{ teacher.subject }}</span></p>
-                        <p><i class="fa-solid fa-graduation-cap"></i> <span><b>Class:</b> {{ teacher.classes }}</span></p>
-                        <p><i class="fa-solid fa-location-dot"></i> <span><b>Location:</b> {{ teacher.location }}</span></p>
-                        <p><i class="fa-solid fa-indian-rupee-sign"></i> <span><b>Fees:</b> ₹{{ teacher.fees }}</span></p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="https://wa.me/91{{ teacher.phone }}" target="_blank" class="btn btn-contact">
-                            <i class="fa-brands fa-whatsapp"></i> Contact
-                        </a>
-                        <a href="{% url 'edit_teacher' teacher.id %}" class="btn btn-edit" title="Edit Teacher Profile">
-                            <i class="fa-solid fa-pen"></i>
-                        </a>
-                        <form action="{% url 'delete_teacher' teacher.id %}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this listing?');">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-delete" title="Delete Teacher Listing">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <div class="empty-state">
-                <i class="fa-solid fa-user-slash" style="font-size: 2.5rem; color: #94a3b8; margin-bottom: 15px;"></i>
-                <h3>No Tutors Found</h3>
-                <p>No matching teacher profiles were found for your query. Try resetting your search filters or add a new listing!</p>
-                <a href="{% url 'add_teacher' %}" class="btn btn-search">Become a Teacher</a>
+            <!-- Popup Header -->
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="bg-brand-blue/20 text-brand-blue border border-brand-blue/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-block mb-2">
+                    Grow Your Teaching Business
+                </span>
+                <h2 class="font-outfit text-2xl sm:text-4xl font-extrabold text-white">
+                    Choose the Right Membership Plan
+                </h2>
+                <p class="text-slate-400 text-xs sm:text-sm mt-2">
+                    Join QPhysics Academy for free or upgrade to unlock premium visibility and student enquiries!
+                </p>
             </div>
-        {% endif %}
+
+            <!-- Pricing Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- 1. FREE PLAN -->
+                <div class="bg-brand-card p-6 rounded-2xl border border-slate-700/80 flex flex-col justify-between hover:border-slate-500 transition">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Basic</span>
+                            <span class="bg-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-0.5 rounded-full">Free</span>
+                        </div>
+                        <h3 class="font-outfit text-xl font-bold text-white">Free Plan</h3>
+                        <p class="text-2xl font-extrabold text-white my-3">₹0 <span class="text-xs font-normal text-slate-400">/ forever</span></p>
+                        
+                        <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Create Basic Profile</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Listed in Directory Search</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Browse Teachers & Students</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Basic Contact Requests</li>
+                        </ul>
+                    </div>
+                    <a href="{% url 'add_teacher' %}?plan=free" class="mt-6 w-full bg-slate-800 hover:bg-slate-700 text-white font-outfit text-xs font-bold py-3 rounded-xl transition text-center border border-slate-700">
+                        Get Started Free
+                    </a>
+                </div>
+
+                <!-- 2. TEACHER PRO PLAN -->
+                <div class="bg-brand-card p-6 rounded-2xl border-2 border-brand-blue shadow-xl shadow-blue-500/10 flex flex-col justify-between relative transform md:-translate-y-2">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-blue text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-md">
+                        Most Popular
+                    </span>
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Pro Tier</span>
+                            <span class="bg-sky-500/10 text-sky-400 border border-sky-500/30 text-[10px] font-semibold px-2.5 py-0.5 rounded-full">Recommended</span>
+                        </div>
+                        <h3 class="font-outfit text-xl font-bold text-white">Teacher Pro</h3>
+                        <p class="text-2xl font-extrabold text-white my-3">₹299–₹499 <span class="text-xs font-normal text-slate-400">/ month</span></p>
+                        
+                        <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Higher Search Visibility</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Expanded Profile Information</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Verification Badge</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Student Enquiry Dashboard</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Direct Contact Requests & Analytics</li>
+                        </ul>
+                    </div>
+                    <a href="{% url 'add_teacher' %}?plan=pro" class="mt-6 w-full bg-brand-blue hover:bg-blue-600 text-white font-outfit text-xs font-bold py-3 rounded-xl transition text-center shadow-lg shadow-blue-500/30">
+                        Register as Pro Teacher
+                    </a>
+                </div>
+
+                <!-- 3. TEACHER PREMIUM PLAN -->
+                <div class="bg-brand-card p-6 rounded-2xl border-2 border-amber-500/60 shadow-xl shadow-amber-500/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Ultimate</span>
+                            <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-semibold px-2.5 py-0.5 rounded-full">Full Suite</span>
+                        </div>
+                        <h3 class="font-outfit text-xl font-bold text-white">Teacher Premium</h3>
+                        <p class="text-2xl font-extrabold text-white my-3">₹999–₹1,999 <span class="text-xs font-normal text-slate-400">/ month</span></p>
+                        
+                        <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Top-of-Page Featured Placement</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Unlimited Student Enquiries</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Dedicated Promotional Page & Course Listings</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Online Class Integration</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Advanced Student Management Tools</li>
+                        </ul>
+                    </div>
+                    <a href="{% url 'add_teacher' %}?plan=premium" class="mt-6 w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-outfit text-xs font-bold py-3 rounded-xl transition text-center shadow-md">
+                        Register as Premium Teacher
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="mt-6 text-center">
+                <button onclick="closePricingModal()" class="text-xs text-slate-400 hover:text-slate-200 underline">
+                    Continue browsing existing teachers directory &rarr;
+                </button>
+            </div>
+
+        </div>
     </div>
 
-</div>
-
-<!-- FOOTER WITH AFFILIATION & CREDENTIALS -->
-<footer>
-    <div style="max-width: 900px; margin: 0 auto;">
-        <h3>Shiksha Sadan</h3>
-        <p style="margin-bottom: 20px;">
-            Connecting Students, Tutors & Accommodations across Medinipur
-        </p>
-
-        <hr style="border: 0; border-top: 1px solid #1e293b; margin: 22px 0;">
-
-        <!-- DEVELOPER & ACADEMIC CREDENTIALS -->
-        <div style="margin-bottom: 22px;">
-            <p style="font-size: 1rem; font-weight: 600; color: #fbbf24; margin-bottom: 6px;">
-                Designed, Maintained & Developed by Dr. Mithun Patra
-            </p>
-            <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 4px;">
-                <i class="fa-solid fa-graduation-cap" style="color: #60a5fa;"></i> <strong>Ph.D. in Physics / Astronomy & Space Sciences</strong>
-            </p>
-            <p style="font-size: 0.88rem; color: #cbd5e1;">
-                <i class="fa-solid fa-building-columns" style="color: #60a5fa;"></i> <strong>Affiliation:</strong> National Institute of Science Education and Research (NISER), Odisha, India
-            </p>
+    <!-- 1. HEADER BRANDING -->
+    <header class="relative bg-cover bg-center bg-fixed py-14 px-4 text-center overflow-hidden border-b border-slate-800"
+            style="background-image: linear-gradient(135deg, rgba(7, 12, 30, 0.92) 0%, rgba(15, 23, 42, 0.88) 50%, rgba(37, 99, 235, 0.75) 100%), url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=2000&auto=format&fit=crop');">
+        
+        <h1 class="font-outfit text-4xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300 drop-shadow-lg">
+            QPhysics Academy
+        </h1>
+        
+        <div class="mt-3">
+            <span class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-gold bg-amber-500/10 border border-amber-500/30 px-4 py-1.5 rounded-full backdrop-blur-md shadow-inner transition hover:bg-amber-500/20 hover:scale-105">
+                <i class="fa-solid fa-code"></i> Founded & Developed by <strong class="text-white">Dr. Mithun Patra</strong>
+            </span>
         </div>
-
-        <div class="social-icons">
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-
-        <p style="font-size: 0.82rem; color: #64748b; margin-top: 15px;">
-            &copy; 2026 <strong>Shiksha Sadan</strong>. All rights reserved.
+        
+        <p class="mt-2 text-xs sm:text-sm text-slate-400 font-medium tracking-wide uppercase">
+            Astronomy & Space Researcher, NISER, India
         </p>
+    </header>
+
+    <!-- 2. NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10 px-4 py-3 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2 text-sm font-medium">
+            <a href="{% url 'home' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="{% url 'teachers' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-blue text-white font-semibold shadow-lg shadow-blue-500/30 transition hover:bg-blue-600">
+                <i class="fa-solid fa-chalkboard-user"></i> Teachers
+            </a>
+            <a href="{% url 'messpg_list' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                <i class="fa-solid fa-bed"></i> Mess / PG
+            </a>
+            <a href="{% url 'information' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                <i class="fa-solid fa-circle-info"></i> Information
+            </a>
+            <a href="{% url 'reviews' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                <i class="fa-solid fa-star"></i> Reviews
+            </a>
+            <button onclick="openPricingModal()" class="flex items-center gap-2 px-4 py-2 rounded-lg text-amber-400 bg-amber-500/10 border border-amber-500/30 hover:bg-amber-500 hover:text-slate-950 font-semibold transition">
+                <i class="fa-solid fa-gem"></i> Plans & Pricing
+            </button>
+        </div>
+    </nav>
+
+    <!-- 3. RUNNING NOTIFICATION TICKER -->
+    <div class="bg-gradient-to-r from-sky-800 to-sky-600 text-white flex items-center overflow-hidden border-b border-sky-500/20 shadow-inner">
+        <div class="bg-sky-900 px-5 py-2.5 font-outfit font-bold text-xs uppercase tracking-wider whitespace-nowrap z-10 flex items-center gap-2 shadow-lg">
+            <i class="fa-solid fa-bolt text-sky-300 animate-bounce"></i> Updates
+        </div>
+        <div class="w-full overflow-hidden whitespace-nowrap">
+            <div class="inline-block whitespace-nowrap pl-[100%] animate-marquee hover:[animation-play-state:paused]">
+                <span class="inline-flex items-center gap-2 mr-12 text-xs sm:text-sm font-medium">
+                    <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider">NEW</span>
+                    New Teacher Profile Added: Mathematics Specialist in Paschim Medinipur! 
+                    <a href="{% url 'teachers' %}" class="text-yellow-300 font-semibold underline underline-offset-2 ml-1 hover:text-white">Review Details &rarr;</a>
+                </span>
+                <span class="inline-flex items-center gap-2 mr-12 text-xs sm:text-sm font-medium">
+                    <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider">UPDATED</span>
+                    Sunrise Boys Mess updated room availability & pricing. 
+                    <a href="{% url 'messpg_list' %}" class="text-yellow-300 font-semibold underline underline-offset-2 ml-1 hover:text-white">Review Details &rarr;</a>
+                </span>
+                <span class="inline-flex items-center gap-2 mr-12 text-xs sm:text-sm font-medium">
+                    <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider">NOTICE</span>
+                    Teacher registrations are currently open across Paschim & Purba Medinipur. 
+                    <button onclick="openPricingModal()" class="text-yellow-300 font-semibold underline underline-offset-2 ml-1 hover:text-white">Register Now &rarr;</button>
+                </span>
+            </div>
+        </div>
     </div>
-</footer>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-12">
+
+        <!-- HERO SECTION -->
+        <section class="text-center max-w-3xl mx-auto mb-10">
+            <h2 class="font-outfit text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white">
+                Find Expert <span class="bg-gradient-to-r from-blue-400 to-sky-400 bg-clip-text text-transparent">Tutors & Educators</span> in Medinipur
+            </h2>
+            <p class="text-slate-400 mt-3 text-base sm:text-lg">
+                Browse verified teacher profiles across subject specialties and academic levels
+            </p>
+        </section>
+
+        <!-- 4. SEARCH & FILTER BOX -->
+        <div class="bg-brand-card p-6 sm:p-8 rounded-2xl border border-slate-700/80 shadow-2xl mb-12">
+            <form method="GET" action="{% url 'teachers' %}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <select name="level" aria-label="Select Level" class="bg-slate-900 border border-slate-700 text-slate-200 text-sm rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                    <option value="">All Academic Levels</option>
+                    <option value="Secondary" {% if request.GET.level == 'Secondary' %}selected{% endif %}>Secondary</option>
+                    <option value="Higher Secondary" {% if request.GET.level == 'Higher Secondary' %}selected{% endif %}>Higher Secondary</option>
+                </select>
+
+                <select name="classes" aria-label="Select Class" class="bg-slate-900 border border-slate-700 text-slate-200 text-sm rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                    <option value="">All Classes</option>
+                    <option value="5" {% if request.GET.classes == '5' %}selected{% endif %}>Class 5</option>
+                    <option value="6" {% if request.GET.classes == '6' %}selected{% endif %}>Class 6</option>
+                    <option value="7" {% if request.GET.classes == '7' %}selected{% endif %}>Class 7</option>
+                    <option value="8" {% if request.GET.classes == '8' %}selected{% endif %}>Class 8</option>
+                    <option value="9" {% if request.GET.classes == '9' %}selected{% endif %}>Class 9</option>
+                    <option value="10" {% if request.GET.classes == '10' %}selected{% endif %}>Class 10</option>
+                    <option value="11" {% if request.GET.classes == '11' %}selected{% endif %}>Class 11</option>
+                    <option value="12" {% if request.GET.classes == '12' %}selected{% endif %}>Class 12</option>
+                </select>
+
+                <select name="district" aria-label="Select District" class="bg-slate-900 border border-slate-700 text-slate-200 text-sm rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                    <option value="">All Districts</option>
+                    <option value="Paschim Medinipur" {% if request.GET.district == 'Paschim Medinipur' %}selected{% endif %}>Paschim Medinipur</option>
+                    <option value="Purba Medinipur" {% if request.GET.district == 'Purba Medinipur' %}selected{% endif %}>Purba Medinipur</option>
+                </select>
+
+                <select name="subject" aria-label="Select Subject" class="bg-slate-900 border border-slate-700 text-slate-200 text-sm rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                    <option value="">All Subjects</option>
+                    <option value="Mathematics" {% if request.GET.subject == 'Mathematics' %}selected{% endif %}>Mathematics</option>
+                    <option value="Physical Science" {% if request.GET.subject == 'Physical Science' %}selected{% endif %}>Physical Science</option>
+                    <option value="Life Science" {% if request.GET.subject == 'Life Science' %}selected{% endif %}>Life Science</option>
+                    <option value="English" {% if request.GET.subject == 'English' %}selected{% endif %}>English</option>
+                    <option value="Bengali" {% if request.GET.subject == 'Bengali' %}selected{% endif %}>Bengali</option>
+                    <option value="History" {% if request.GET.subject == 'History' %}selected{% endif %}>History</option>
+                    <option value="Geography" {% if request.GET.subject == 'Geography' %}selected{% endif %}>Geography</option>
+                    <option value="Computer Science" {% if request.GET.subject == 'Computer Science' %}selected{% endif %}>Computer Science</option>
+                </select>
+
+                <button type="submit" class="bg-brand-blue hover:bg-blue-600 text-white font-outfit font-semibold text-sm rounded-xl px-6 py-3 transition shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass"></i> Filter Tutors
+                </button>
+            </form>
+        </div>
+
+        <!-- ACTION HEADER BAR -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+            <h3 class="font-outfit text-xl sm:text-2xl font-bold text-white flex items-center gap-3">
+                <i class="fa-solid fa-chalkboard-user text-brand-blue"></i> Teacher Profiles Directory
+            </h3>
+            <button onclick="openPricingModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-outfit text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-xl transition shadow-lg shadow-emerald-600/20 flex items-center gap-2">
+                <i class="fa-solid fa-user-plus"></i> Register as a Teacher
+            </button>
+        </div>
+
+        <!-- TEACHERS GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% if teachers %}
+                {% for teacher in teachers %}
+                    <div class="bg-brand-card p-6 rounded-2xl border border-slate-700/80 shadow-xl flex flex-col justify-between hover:-translate-y-2 hover:border-slate-500 transition duration-300 relative">
+                        
+                        <!-- Membership Badge Display -->
+                        {% if teacher.membership_tier == 'premium' %}
+                            <span class="absolute -top-3 right-4 bg-amber-500 text-slate-950 font-bold text-[10px] px-3 py-0.5 rounded-full uppercase tracking-wider shadow">
+                                Premium Teacher
+                            </span>
+                        {% elif teacher.membership_tier == 'pro' %}
+                            <span class="absolute -top-3 right-4 bg-sky-500 text-white font-bold text-[10px] px-3 py-0.5 rounded-full uppercase tracking-wider shadow">
+                                Pro Teacher
+                            </span>
+                        {% endif %}
+
+                        <div>
+                            <a href="{% url 'teacher_detail' teacher.id %}">
+                                <h3 class="font-outfit text-xl font-bold text-white hover:text-brand-blue transition mb-4">{{ teacher.name }}</h3>
+                            </a>
+                            <div class="space-y-3 text-sm text-slate-300">
+                                <p class="flex items-center gap-3"><i class="fa-solid fa-book-open text-brand-blue w-5 text-center"></i> <span><b class="text-white">Subject:</b> {{ teacher.subject }}</span></p>
+                                <p class="flex items-center gap-3"><i class="fa-solid fa-graduation-cap text-brand-blue w-5 text-center"></i> <span><b class="text-white">Class:</b> {{ teacher.classes }}</span></p>
+                                <p class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-brand-blue w-5 text-center"></i> <span><b class="text-white">Location:</b> {{ teacher.location }}</span></p>
+                                <p class="flex items-center gap-3"><i class="fa-solid fa-indian-rupee-sign text-brand-blue w-5 text-center"></i> <span><b class="text-white">Fees:</b> ₹{{ teacher.fees }}</span></p>
+                            </div>
+                        </div>
+
+                        <div class="pt-5 mt-6 border-t border-slate-800 flex items-center gap-2">
+                            <a href="https://wa.me/91{{ teacher.phone }}" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-outfit text-xs font-semibold py-2.5 px-4 rounded-lg transition shadow-md shadow-emerald-900/20 flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Contact
+                            </a>
+                            <a href="{% url 'edit_teacher' teacher.id %}" class="bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-white border border-amber-500/30 p-2.5 rounded-lg transition" title="Edit Teacher Profile">
+                                <i class="fa-solid fa-pen text-sm"></i>
+                            </a>
+                            <form action="{% url 'delete_teacher' teacher.id %}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this listing?');">
+                                {% csrf_token %}
+                                <button type="submit" class="bg-rose-500/10 hover:bg-rose-600 text-rose-400 hover:text-white border border-rose-500/30 p-2.5 rounded-lg transition" title="Delete Teacher Listing">
+                                    <i class="fa-solid fa-trash text-sm"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-span-full bg-brand-card p-12 rounded-2xl text-center border-2 border-dashed border-slate-700">
+                    <i class="fa-solid fa-user-slash text-4xl text-slate-500 mb-4 block"></i>
+                    <h3 class="font-outfit text-2xl font-bold text-white mb-2">No Tutors Found</h3>
+                    <p class="text-slate-400 text-sm mb-6 max-w-md mx-auto">No matching teacher profiles were found for your query. Try resetting your search filters or add a new listing!</p>
+                    <button onclick="openPricingModal()" class="inline-flex items-center gap-2 bg-brand-blue hover:bg-blue-600 text-white font-outfit font-semibold px-6 py-3 rounded-xl transition shadow-lg shadow-blue-500/30">
+                        Become a Teacher
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+
+    </main>
+
+    <!-- FOOTER WITH AFFILIATION & CREDENTIALS -->
+    <footer class="bg-brand-dark border-t-2 border-brand-blue text-center py-12 px-4 mt-20">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="font-outfit text-2xl font-bold text-white mb-1">QPhysics Academy</h3>
+            <p class="text-slate-400 text-sm mb-6">Connecting Students, Tutors & Accommodations across Medinipur</p>
+
+            <div class="w-full h-px bg-slate-800 my-6"></div>
+
+            <!-- DEVELOPER & ACADEMIC CREDENTIALS -->
+            <div class="mb-6 space-y-1.5">
+                <p class="text-sm font-semibold text-brand-gold">
+                    Designed, Maintained & Developed by Dr. Mithun Patra
+                </p>
+                <p class="text-xs text-slate-300 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-sky-400"></i> <strong>Ph.D. in Physics / Astronomy & Space Sciences</strong>
+                </p>
+                <p class="text-xs text-slate-300 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-building-columns text-sky-400"></i> <strong>Affiliation:</strong> National Institute of Science Education and Research (NISER), Odisha, India
+                </p>
+            </div>
+
+            <p class="text-xs text-slate-500">&copy; 2026 <strong>QPhysics Academy</strong>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL CONTROL SCRIPT -->
+    <script>
+        function openPricingModal() {
+            document.getElementById('pricingModal').classList.remove('hidden');
+        }
+
+        function closePricingModal() {
+            document.getElementById('pricingModal').classList.add('hidden');
+        }
+
+        // Keep popup visible on initial page load
+        document.addEventListener("DOMContentLoaded", function() {
+            // Popup displays automatically on page arrival
+        });
+    </script>
 
 </body>
 </html>

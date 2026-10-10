@@ -3,248 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Mess / PG Listings</title>
+    <meta name="author" content="Dr. Mithun Patra, Astronomy & Space Researcher, NISER, India">
+    <meta name="description" content="QPhysics Academy - Verified Mess & PG Accommodations Directory across Medinipur.">
+    <meta name="keywords" content="QPhysics Academy, Medinipur Mess, Medinipur PG, Hostels Medinipur, Student Accommodation">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>QPhysics Academy | Mess & PG Listings</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #eef2f3, #ffffff);
-            color: #333;
-        }
-
-        /* HEADER */
-        header {
-            background: linear-gradient(135deg, #2c3e50, #4ca1af);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 38px;
-            margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s ease forwards;
-        }
-
-        header p {
-            color: #ecf0f1;
-            font-weight: 300;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#070c1e',
+                            navy: '#0f172a',
+                            card: '#1e293b',
+                            blue: '#2563eb',
+                            sky: '#0284c7',
+                            gold: '#fbbf24',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 26s linear infinite',
+                    }
+                }
             }
         }
+    </script>
 
-        /* TOP SECTION NAVIGATION */
-        .top-section {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 30px 20px;
-        }
-
-        .btn {
-            padding: 12px 22px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        .add-btn {
-            background: #27ae60;
-            color: white;
-        }
-        .add-btn:hover { background: #219150; }
-
-        .back-btn {
-            background: #34495e;
-            color: white;
-        }
-        .back-btn:hover { background: #2c3e50; }
-
-        /* GRID */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            padding-bottom: 50px;
-        }
-
-        /* CARD */
-        .card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: 0.3s;
-            border: 1px solid #f0f0f0;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-        }
-
-        /* IMAGE */
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-bottom: 3px solid #3498db;
-        }
-
-        /* CONTENT */
-        .content {
-            padding: 20px;
-        }
-
-        .content h2 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 22px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .content p {
-            margin: 8px 0;
-            color: #555;
-            font-size: 14px;
-        }
-
-        .content i {
-            width: 20px;
-            color: #3498db;
-            text-align: center;
-            margin-right: 5px;
-        }
-
-        /* CONTACT BUTTON */
-        .contact-btn {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            padding: 12px 18px;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: 0.3s;
-            font-weight: 500;
-        }
-
-        .contact-btn:hover {
-            background: #2980b9;
-        }
-
-        /* 3. FIX: EMPTY STATE GRID FIX */
-        .empty {
-            text-align: center;
-            margin-top: 60px;
-            color: #7f8c8d;
-            grid-column: 1 / -1; /* Forces the empty message to span the full width */
-        }
-
-        .empty i {
-            font-size: 50px;
-            color: #ccc;
-            margin-bottom: 15px;
-        }
-
-    </style>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body>
+<body class="bg-brand-navy text-slate-100 font-sans antialiased selection:bg-brand-blue selection:text-white min-h-screen flex flex-col justify-between">
 
-    <header>
-        <h1>Mess / PG Listings</h1>
-        <p>Find comfortable accommodation for students in Medinipur</p>
-    </header>
+    <div>
+        <!-- 1. HEADER BRANDING -->
+        <header class="relative bg-cover bg-center bg-fixed py-14 px-4 text-center overflow-hidden border-b border-slate-800"
+                style="background-image: linear-gradient(135deg, rgba(7, 12, 30, 0.92) 0%, rgba(15, 23, 42, 0.88) 50%, rgba(37, 99, 235, 0.75) 100%), url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2000&auto=format&fit=crop');">
+            
+            <h1 class="font-outfit text-4xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300 drop-shadow-lg">
+                QPhysics Academy
+            </h1>
+            
+            <div class="mt-3">
+                <span class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-gold bg-amber-500/10 border border-amber-500/30 px-4 py-1.5 rounded-full backdrop-blur-md shadow-inner transition hover:bg-amber-500/20 hover:scale-105">
+                    <i class="fa-solid fa-code"></i> Founded & Developed by <strong class="text-white">Dr. Mithun Patra</strong>
+                </span>
+            </div>
+            
+            <p class="mt-2 text-xs sm:text-sm text-slate-400 font-medium tracking-wide uppercase">
+                Astronomy & Space Researcher, NISER, India
+            </p>
+        </header>
 
-    <div class="top-section">
-        <a href="/" class="btn back-btn">
-            <i class="fa-solid fa-arrow-left"></i> Back to Home
-        </a>
-        <a href="/add_messpg/" class="btn add-btn">
-            <i class="fa-solid fa-plus"></i> Add Mess / PG
-        </a>
-    </div>
+        <!-- 2. NAVIGATION BAR -->
+        <nav class="sticky top-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10 px-4 py-3 shadow-2xl">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2 text-sm font-medium">
+                <a href="{% url 'home' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-house"></i> Home
+                </a>
+                <a href="{% url 'teachers' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-chalkboard-user"></i> Teachers
+                </a>
+                <a href="{% url 'messpg_list' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-blue text-white font-semibold shadow-lg shadow-blue-500/30 transition hover:bg-blue-600">
+                    <i class="fa-solid fa-bed"></i> Mess / PG
+                </a>
+                <a href="{% url 'information' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-circle-info"></i> Information
+                </a>
+                <a href="{% url 'reviews' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-star"></i> Reviews
+                </a>
+                <a href="{% url 'add_teacher' %}" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">
+                    <i class="fa-solid fa-user-plus"></i> Become a Teacher
+                </a>
+            </div>
+        </nav>
 
-    <div class="container">
-
-        {% if messes %}
-
-            {% for mess in messes %}
-
-                <div class="card">
-
-                    {% if mess.image %}
-                        <img src="{{ mess.image.url }}" alt="{{ mess.name }}">
-                    {% else %}
-                        <img src="https://via.placeholder.com/400x230.png?text=No+Image+Available" alt="No Image">
-                    {% endif %}
-
-                    <div class="content">
-
-                        <h2>{{ mess.name }}</h2>
-
-                        <p><i class="fa-solid fa-user"></i> <b>Owner:</b> {{ mess.owner_name }}</p>
-                        <p><i class="fa-solid fa-location-dot"></i> <b>Location:</b> {{ mess.location }}</p>
-                        <p><i class="fa-solid fa-map"></i> <b>District:</b> {{ mess.district }}</p>
-                        <p><i class="fa-solid fa-indian-rupee-sign" style="color: #27ae60;"></i> <b>Rent:</b> ₹{{ mess.rent }} / month</p>
-                        <p><i class="fa-solid fa-utensils"></i> <b>Food:</b> {{ mess.food_available }}</p>
-
-                        <a href="https://wa.me/91{{ mess.phone }}" class="contact-btn">
-                            <i class="fa-brands fa-whatsapp"></i> Contact Owner
-                        </a>
-
-                    </div>
-
+        <!-- 3. RUNNING NOTIFICATION TICKER -->
+        <div class="bg-gradient-to-r from-sky-800 to-sky-600 text-white flex items-center overflow-hidden border-b border-sky-500/20 shadow-inner">
+            <div class="bg-sky-900 px-5 py-2.5 font-outfit font-bold text-xs uppercase tracking-wider whitespace-nowrap z-10 flex items-center gap-2 shadow-lg">
+                <i class="fa-solid fa-bolt text-sky-300 animate-bounce"></i> Updates
+            </div>
+            <div class="w-full overflow-hidden whitespace-nowrap">
+                <div class="inline-block whitespace-nowrap pl-[100%] animate-marquee hover:[animation-play-state:paused]">
+                    <span class="inline-flex items-center gap-2 mr-12 text-xs sm:text-sm font-medium">
+                        <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider">NEW</span>
+                        New Teacher Profile Added: Mathematics Specialist in Paschim Medinipur! 
+                        <a href="{% url 'teachers' %}" class="text-yellow-300 font-semibold underline underline-offset-2 ml-1 hover:text-white">Review Details &rarr;</a>
+                    </span>
+                    <span class="inline-flex items-center gap-2 mr-12 text-xs sm:text-sm font-medium">
+                        <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider">UPDATED</span>
+                        Sunrise Boys Mess updated room availability & pricing. 
+                        <a href="{% url 'messpg_list' %}" class="text-yellow-300 font-semibold underline underline-offset-2 ml-1 hover:text-white">Review Details &rarr;</a>
+                    </span>
+                    <span class="inline-flex items-center gap-2 mr-12 text-xs sm:text-sm font-medium">
+                        <span class="bg-red-500 text-white text-[10px] font-black px-2 py-0.5 rounded tracking-wider">NOTICE</span>
+                        Teacher registrations are currently open across Paschim & Purba Medinipur. 
+                        <a href="{% url 'add_teacher' %}" class="text-yellow-300 font-semibold underline underline-offset-2 ml-1 hover:text-white">Register Now &rarr;</a>
+                    </span>
                 </div>
+            </div>
+        </div>
 
-            {% endfor %}
+        <!-- MAIN CONTAINER -->
+        <main class="max-w-7xl mx-auto px-4 py-12">
 
-        {% else %}
+            <!-- PAGE HERO -->
+            <section class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="font-outfit text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white">
+                    Verified <span class="bg-gradient-to-r from-blue-400 to-sky-400 bg-clip-text text-transparent">Mess & PG Directory</span>
+                </h2>
+                <p class="text-slate-400 mt-3 text-base sm:text-lg">
+                    Find student-friendly hostels, rooms, and paying guest accommodations across Medinipur
+                </p>
+            </section>
 
-            <div class="empty">
-                <i class="fa-solid fa-house-circle-xmark"></i>
-                <h2>No Mess / PG Available</h2>
-                <p>Be the first to add a listing in your area!</p>
+            <!-- ACTION BAR -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+                <h3 class="font-outfit text-xl sm:text-2xl font-bold text-white flex items-center gap-3">
+                    <i class="fa-solid fa-house-user text-brand-blue"></i> Student Accommodations
+                </h3>
+                <div class="flex items-center gap-3">
+                    <a href="{% url 'home' %}" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-outfit text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl transition flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-left"></i> Home
+                    </a>
+                    <a href="{% url 'add_messpg' %}" class="bg-emerald-600 hover:bg-emerald-500 text-white font-outfit text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-xl transition shadow-lg shadow-emerald-900/30 flex items-center gap-2">
+                        <i class="fa-solid fa-plus"></i> List Your Mess / PG
+                    </a>
+                </div>
             </div>
 
-        {% endif %}
+            <!-- MESS & PG GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% if messes %}
+                    {% for mess in messes %}
+                        <div class="bg-brand-card rounded-2xl border border-slate-700/80 shadow-xl overflow-hidden flex flex-col justify-between hover:-translate-y-2 hover:border-slate-500 transition duration-300">
+                            <div>
+                                <!-- PROPERTY IMAGE -->
+                                <div class="relative h-52 w-full bg-slate-900 border-b border-slate-700/80 overflow-hidden">
+                                    {% if mess.image %}
+                                        <img src="{{ mess.image.url }}" alt="{{ mess.name }}" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                                    {% else %}
+                                        <div class="w-full h-full flex flex-col items-center justify-center text-slate-500 bg-slate-900">
+                                            <i class="fa-solid fa-image text-3xl mb-1"></i>
+                                            <span class="text-xs font-medium">No Image Uploaded</span>
+                                        </div>
+                                    {% endif %}
+                                    <span class="absolute top-3 right-3 bg-brand-dark/80 backdrop-blur-md text-amber-400 border border-amber-500/30 font-semibold text-xs px-3 py-1 rounded-full shadow-lg">
+                                        <i class="fa-solid fa-indian-rupee-sign mr-0.5"></i>{{ mess.rent }} / mo
+                                    </span>
+                                </div>
 
+                                <!-- DETAILS CONTENT -->
+                                <div class="p-6">
+                                    <h3 class="font-outfit text-xl font-bold text-white mb-4 leading-snug">{{ mess.name }}</h3>
+
+                                    <div class="space-y-3 text-sm text-slate-300">
+                                        <p class="flex items-center gap-3">
+                                            <i class="fa-solid fa-user-tie text-brand-blue w-5 text-center"></i>
+                                            <span><b class="text-white">Owner:</b> {{ mess.owner_name }}</span>
+                                        </p>
+                                        <p class="flex items-center gap-3">
+                                            <i class="fa-solid fa-location-dot text-brand-blue w-5 text-center"></i>
+                                            <span><b class="text-white">Location:</b> {{ mess.location }}</span>
+                                        </p>
+                                        <p class="flex items-center gap-3">
+                                            <i class="fa-solid fa-map-location-dot text-brand-blue w-5 text-center"></i>
+                                            <span><b class="text-white">District:</b> {{ mess.district }}</span>
+                                        </p>
+                                        <p class="flex items-center gap-3">
+                                            <i class="fa-solid fa-utensils text-brand-blue w-5 text-center"></i>
+                                            <span><b class="text-white">Food Facility:</b> 
+                                                <span class="{% if mess.food_available == 'Available' %}text-emerald-400{% else %}text-slate-400{% endif %} font-medium">
+                                                    {{ mess.food_available }}
+                                                </span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CONTACT BUTTON -->
+                            <div class="px-6 pb-6 pt-2">
+                                <a href="https://wa.me/91{{ mess.phone }}" target="_blank"
+                                   class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-outfit text-xs font-semibold py-3 px-4 rounded-xl transition shadow-md shadow-emerald-900/20 flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i> Contact Property Owner
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <!-- EMPTY STATE -->
+                    <div class="col-span-full bg-brand-card p-12 rounded-2xl text-center border-2 border-dashed border-slate-700">
+                        <i class="fa-solid fa-house-circle-xmark text-4xl text-slate-500 mb-4 block"></i>
+                        <h3 class="font-outfit text-2xl font-bold text-white mb-2">No Mess or PG Listings Available</h3>
+                        <p class="text-slate-400 text-sm mb-6 max-w-md mx-auto">There are currently no accommodations registered in this section. Be the first to add your listing!</p>
+                        <a href="{% url 'add_messpg' %}" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-outfit font-semibold px-6 py-3 rounded-xl transition shadow-lg shadow-emerald-900/30">
+                            <i class="fa-solid fa-plus"></i> List Your Mess / PG
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+
+        </main>
     </div>
+
+    <!-- FOOTER WITH AFFILIATION & CREDENTIALS -->
+    <footer class="bg-brand-dark border-t-2 border-brand-blue text-center py-12 px-4 mt-20">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="font-outfit text-2xl font-bold text-white mb-1">QPhysics Academy</h3>
+            <p class="text-slate-400 text-sm mb-6">Connecting Students, Tutors & Accommodations across Medinipur</p>
+
+            <div class="w-full h-px bg-slate-800 my-6"></div>
+
+            <!-- DEVELOPER & ACADEMIC CREDENTIALS -->
+            <div class="mb-6 space-y-1.5">
+                <p class="text-sm font-semibold text-brand-gold">
+                    Designed, Maintained & Developed by Dr. Mithun Patra
+                </p>
+                <p class="text-xs text-slate-300 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-sky-400"></i> <strong>Ph.D. in Physics / Astronomy & Space Sciences</strong>
+                </p>
+                <p class="text-xs text-slate-300 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-building-columns text-sky-400"></i> <strong>Affiliation:</strong> National Institute of Science Education and Research (NISER), Odisha, India
+                </p>
+            </div>
+
+            <div class="flex items-center justify-center gap-4 my-6">
+                <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:bg-brand-blue hover:text-white transition hover:-translate-y-1">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:bg-brand-blue hover:text-white transition hover:-translate-y-1">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:bg-brand-blue hover:text-white transition hover:-translate-y-1">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:bg-brand-blue hover:text-white transition hover:-translate-y-1">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+
+            <p class="text-xs text-slate-500">&copy; 2026 <strong>QPhysics Academy</strong>. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>

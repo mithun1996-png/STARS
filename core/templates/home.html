@@ -1,1014 +1,592 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Dr. Mithun Patra, Astronomy & Space Researcher, NISER, India">
-    <meta name="description" content="STARS - Find qualified teachers, Mess/PG stays, Python/MATLAB/LaTeX coding guides, and space science updates across Medinipur.">
-    <meta name="keywords" content="STARS, Shiksha, Teaching, Accommodation, Research, Space, Medinipur Tutors, PG, Mess, Astrophysics, Python, MATLAB, LaTeX">
+    <meta name="description" content="QPhysics Academy - Centralized Educational & Accommodation Directory across Medinipur & Bhubaneswar.">
+    
+    <title>QPhysics Academy | Verified Tutors, Student PG & Research Tools</title>
 
-    <title>STARS | Shiksha . Teaching . Accommodation . Research . Space</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#030712',
+                            navy: '#0b0f19',
+                            card: 'rgba(17, 24, 39, 0.75)',
+                            blue: '#3b82f6',
+                            gold: '#fbbf24',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        :root {
-            --primary: #0f172a;
-            --primary-light: #1e293b;
-            --secondary: #2563eb;
-            --secondary-hover: #1d4ed8;
-            --accent-gold: #f59e0b;
-            --accent-teal: #0d9488;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --bg-light: #f8fafc;
-            --card-bg: #ffffff;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
-            --shadow-lg: 0 12px 30px -4px rgba(15, 23, 42, 0.12);
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        h1, h2, h3, h4, .brand-title {
-            font-family: 'Outfit', sans-serif;
-            letter-spacing: -0.02em;
-        }
-
-        /* 1. HEADER BRANDING */
-        header {
-            background: linear-gradient(135deg, #0b1329 0%, #1e293b 50%, #1d4ed8 100%);
-            color: white;
-            text-align: center;
-            padding: 50px 20px 45px;
-            box-shadow: var(--shadow-md);
-            position: relative;
-        }
-
-        header h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        }
-
-        header .founder-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            color: #fbbf24;
-            font-weight: 600;
-            background: rgba(251, 191, 36, 0.12);
-            padding: 6px 16px;
-            border-radius: 30px;
-            border: 1px solid rgba(251, 191, 36, 0.25);
-            margin-top: 6px;
-            letter-spacing: 0.2px;
-        }
-
-        header .subtitle {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            font-weight: 400;
-            margin-top: 8px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        /* 2. NAVIGATION & DROPDOWN */
-        nav {
-            background: #090d16;
-            padding: 10px 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        nav a, nav .dropdown-btn {
-            color: #94a3b8;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 8px 18px;
-            border-radius: 8px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-        }
-
-        nav a:hover, nav a.active, nav .dropdown:hover .dropdown-btn {
-            color: #ffffff;
-            background: var(--secondary);
-            font-weight: 600;
-            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #0f172a;
-            min-width: 240px;
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
-            border-radius: var(--radius-md);
-            padding: 8px 0;
-            z-index: 1001;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: left;
-        }
-
-        .dropdown-menu a {
-            color: #cbd5e1;
-            padding: 10px 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-radius: 0;
-            font-weight: 400;
-            font-size: 0.88rem;
-            width: 100%;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: var(--secondary);
-            color: #ffffff;
-            box-shadow: none;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            animation: fadeIn 0.2s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 3. RUNNING NOTIFICATION TICKER */
-        .notification-bar {
-            background: #0284c7;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .notification-label {
-            background: #0369a1;
-            color: #ffffff;
-            padding: 10px 20px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 4px 0 12px rgba(0,0,0,0.15);
-        }
-
-        .notification-ticker {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .ticker-content {
-            display: inline-block;
-            white-space: nowrap;
-            padding-left: 100%;
-            animation: marquee 26s linear infinite;
-        }
-
-        .ticker-content:hover {
-            animation-play-state: paused;
-        }
-
-        .ticker-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-right: 50px;
-            font-size: 0.88rem;
-            font-weight: 500;
-        }
-
-        .ticker-item a {
-            color: #fef08a;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.15);
-            transition: var(--transition);
-        }
-
-        .ticker-item a:hover {
-            background: #ffffff;
-            color: #0369a1;
-        }
-
-        .badge-new {
-            background: #ef4444;
-            color: #ffffff;
-            font-size: 0.68rem;
-            padding: 2px 7px;
-            border-radius: 4px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        @keyframes marquee {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
-        }
-
-        /* MAIN CONTAINER */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 45px 0 60px;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            text-align: center;
-            padding: 10px 0 35px 0;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1.25;
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeUp 0.7s ease forwards;
-        }
-
-        .hero span {
-            color: var(--secondary);
-            background: linear-gradient(135deg, #2563eb, #0284c7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            margin-top: 10px;
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 4. SEARCH & FILTER */
-        .filter-box {
-            background: var(--card-bg);
-            padding: 28px;
-            margin-bottom: 55px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .filter-box form {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .filter-box select {
-            padding: 13px 18px;
-            border-radius: 10px;
-            border: 1px solid #cbd5e1;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.92rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            outline: none;
-            background-color: #f8fafc;
-            min-width: 180px;
-            flex: 1;
-            transition: var(--transition);
-        }
-
-        .filter-box select:focus {
-            border-color: var(--secondary);
-            background-color: #fff;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
-        }
-
-        .btn-search {
-            padding: 13px 28px;
-            background: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-        }
-
-        .btn-search:hover {
-            background: var(--secondary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
-        }
-
-        /* 5. STATISTICS */
-        .stats-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-
-        .stat-box {
-            background: var(--card-bg);
-            padding: 32px 20px;
-            border-radius: var(--radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            border-top: 4px solid var(--secondary);
-            transition: var(--transition);
-        }
-
-        .stat-box:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .stat-box h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            font-weight: 800;
-            line-height: 1;
-        }
-
-        .stat-box p {
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.8px;
-            margin-top: 8px;
-        }
-
-        /* SECTION TITLES */
-        .section-title {
-            text-align: center;
-            margin: 60px 0 35px 0;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.1rem;
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            margin-top: 4px;
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--secondary);
-            margin: 12px auto 0;
-            border-radius: 2px;
-        }
-
-        /* CARD GRIDS */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 28px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 26px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-color: #cbd5e1;
-        }
-
-        .card-header a {
-            text-decoration: none;
-            color: var(--primary);
-        }
-
-        .card-header h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            transition: var(--transition);
-        }
-
-        .card-header h3:hover {
-            color: var(--secondary);
-        }
-
-        .card-body p {
-            margin: 10px 0;
-            color: #334155;
-            font-size: 0.92rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 400;
-        }
-
-        .card-body p b {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .card-body p i {
-            color: var(--secondary);
-            width: 18px;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        .card-actions {
-            margin-top: 22px;
-            padding-top: 16px;
-            border-top: 1px solid #f1f5f9;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        /* BUTTON STYLES */
-        .btn {
-            padding: 9px 16px;
-            border-radius: 8px;
-            border: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: var(--transition);
-        }
-
-        .btn-contact {
-            background: var(--success);
-            color: white;
-            flex: 1;
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
-        }
-
-        .btn-contact:hover {
-            background: #059669;
-            transform: translateY(-1px);
-        }
-
-        .btn-edit {
-            background: #fffbe2;
-            color: #d97706;
-            border: 1px solid #fde68a;
-        }
-
-        .btn-edit:hover {
-            background: #f59e0b;
-            color: white;
-        }
-
-        .btn-delete {
-            background: #fef2f2;
-            color: var(--danger);
-            border: 1px solid #fecaca;
-        }
-
-        .btn-delete:hover {
-            background: var(--danger);
-            color: white;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 50px 20px;
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            grid-column: 1 / -1;
-            box-shadow: var(--shadow-sm);
-            border: 1px dashed #cbd5e1;
-        }
-
-        .empty-state h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .empty-state p {
-            color: var(--text-muted);
-            margin-bottom: 22px;
-            font-size: 0.95rem;
-        }
-
-        /* FEATURE CARDS GRID WITH BRAND COLORS */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 32px 22px;
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .feature-item i {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .feature-item h3 {
-            color: var(--primary);
-            font-size: 1.15rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .feature-item p {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-
-        /* FOOTER BRANDING */
-        footer {
-            background: #090d16;
-            color: #cbd5e1;
-            text-align: center;
-            padding: 50px 20px 35px;
-            margin-top: 70px;
-            border-top: 3px solid var(--secondary);
-        }
-
-        footer h3 {
-            font-size: 1.5rem;
-            color: #ffffff;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-
-        footer .social-icons {
-            margin: 22px 0;
-        }
-
-        footer .social-icons a {
-            color: #cbd5e1;
-            font-size: 1.25rem;
-            margin: 0 10px;
-            transition: var(--transition);
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-        }
-
-        footer .social-icons a:hover {
-            color: #ffffff;
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            .hero h2 { font-size: 1.85rem; }
-            .filter-box select { width: 100%; }
-            .dropdown-menu { position: static; width: 100%; box-shadow: none; }
-        }
-    </style>
 </head>
 
-<body>
+<body class="bg-brand-dark text-slate-100 font-sans antialiased selection:bg-white selection:text-black">
 
-<!-- 1. HEADER BRANDING -->
-<header>
-    <h1 class="brand-title">STARS <span style="font-size: 1.8rem; font-weight: 400; color: #94a3b8;">| Shiksha . Stays . Space</span></h1>
-    <div>
-        <span class="founder-badge">
-            <i class="fa-solid fa-user-astronaut"></i> Founded & Developed by <strong>Dr. Mithun Patra</strong>
-        </span>
-    </div>
-    <p class="subtitle">Astronomy & Space Researcher, NISER, India | Educational & Research Network</p>
-</header>
+    <!-- FIXED TOP NAVBAR (Always Visible) -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-brand-dark/40 backdrop-blur-md border-b border-white/10 px-6 py-4 transition-all duration-300 hover:bg-brand-dark/80">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            
+            <!-- BRAND LOGO & TITLE -->
+            <a href="{% url 'home' %}" class="flex items-center gap-3 group">
+                <img src="{% static 'images/logo.png' %}" 
+                     alt="QPhysics Logo" 
+                     class="h-9 w-auto object-contain transition-transform group-hover:scale-110">
+                <span class="font-outfit text-lg font-bold tracking-wider uppercase text-white group-hover:text-slate-300 transition">
+                    QPhysics Academy
+                </span>
+            </a>
 
-<!-- 2. NAVIGATION BAR -->
-<nav>
-    <a href="/" class="active"><i class="fa-solid fa-house"></i> Home</a>
-    <a href="{% url 'teachers' %}"><i class="fa-solid fa-chalkboard-user"></i> Teachers</a>
-    <a href="{% url 'messpg_list' %}"><i class="fa-solid fa-bed"></i> Mess / PG</a>
-    <a href="/information/"><i class="fa-solid fa-circle-info"></i> Information</a>
-    <a href="/reviews/"><i class="fa-solid fa-star"></i> Reviews</a>
-    <a href="{% url 'add_teacher' %}"><i class="fa-solid fa-user-plus"></i> Become a Teacher</a>
+            <!-- NAVIGATION OPTIONS WITH DROPDOWN MENUS -->
+            <div class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-slate-300">
+                
+                <a href="{% url 'home' %}" class="text-white underline underline-offset-8 transition-all duration-200">
+                    Home
+                </a>
 
-    <!-- LEARNING RESOURCES & ASTROPHYSICS DROPDOWN -->
-    <div class="dropdown">
-        <button class="dropdown-btn">
-            <i class="fa-solid fa-user-astronaut"></i> Astro & Coding Portal <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem; margin-left: 3px;"></i>
-        </button>
-        <div class="dropdown-menu">
-            <a href="/learning/exoplanets/"><i class="fa-solid fa-planet" style="color: #60a5fa;"></i> Exoplanet Research & Science</a>
-            <a href="/learning/python/"><i class="fa-brands fa-python" style="color: #3870a1;"></i> Python Documentation</a>
-            <a href="/learning/matlab/"><i class="fa-solid fa-chart-line" style="color: #e1672a;"></i> MATLAB Data Analysis</a>
-            <a href="/learning/latex/"><i class="fa-solid fa-square-root-variable" style="color: #008080;"></i> LaTeX Paper Writing</a>
-            <a href="/learning/html/"><i class="fa-brands fa-html5" style="color: #e34f26;"></i> HTML & Web Tools</a>
-        </div>
-    </div>
-</nav>
+                <!-- 1. TEACHERS DROPDOWN -->
+                <div class="relative group py-2">
+                    <a href="{% url 'teachers' %}" class="hover:text-white hover:underline underline-offset-8 transition-all duration-200 flex items-center gap-1.5 cursor-pointer">
+                        Teachers <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:rotate-180 transition-transform duration-200"></i>
+                    </a>
 
-<!-- 3. RUNNING NOTIFICATION TICKER -->
-<div class="notification-bar">
-    <div class="notification-label">
-        <i class="fa-solid fa-satellite fa-bounce"></i> Updates
-    </div>
-    <div class="notification-ticker">
-        <div class="ticker-content">
-            <span class="ticker-item">
-                <span class="badge-new">ASTRONOMY</span> 
-                New Exoplanet Research & Space Science Coding Guides (Python, MATLAB, LaTeX) are Live! 
-                <a href="/learning/python/">Explore Portal &rarr;</a>
-            </span>
-            <span class="ticker-item">
-                <span class="badge-new">UPDATED</span> 
-                Sunrise Boys Mess updated room availability & pricing. 
-                <a href="{% url 'messpg_list' %}">Review Details &rarr;</a>
-            </span>
-            <span class="ticker-item">
-                <span class="badge-new">NOTICE</span> 
-                Teacher registrations are currently open across Paschim & Purba Medinipur. 
-                <a href="{% url 'add_teacher' %}">Register Now &rarr;</a>
-            </span>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-
-    <!-- HERO SECTION -->
-    <div class="hero">
-        <h2>Find Verified <span>Teachers, Student Stays</span> in Medinipur and Explore Space Science </h2>
-        <p>Your premier educational directory, verified student accommodations, and computational astrophysics tools</p>
-    </div>
-
-    <!-- 4. SEARCH FILTER -->
-    <div class="filter-box">
-        <form method="GET" action="">
-            <select name="level" aria-label="Select Level">
-                <option value="">All Academic Levels</option>
-                <option value="Secondary">Secondary</option>
-                <option value="Higher Secondary">Higher Secondary</option>
-                <option value="Undergraduate">Undergraduate / College</option>
-            </select>
-
-            <select name="classes" aria-label="Select Class">
-                <option value="">All Classes</option>
-                <option value="5">Class 5</option>
-                <option value="6">Class 6</option>
-                <option value="7">Class 7</option>
-                <option value="8">Class 8</option>
-                <option value="9">Class 9</option>
-                <option value="10">Class 10</option>
-                <option value="11">Class 11</option>
-                <option value="12">Class 12</option>
-            </select>
-
-            <select name="district" aria-label="Select District">
-                <option value="">All Districts</option>
-                <option value="Paschim Medinipur">Paschim Medinipur</option>
-                <option value="Purba Medinipur">Purba Medinipur</option>
-            </select>
-
-            <select name="subject" aria-label="Select Subject">
-                <option value="">All Subjects</option>
-                <option value="Astronomy & Astrophysics">Astronomy & Astrophysics</option>
-                <option value="Physics">Physics</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Physical Science">Physical Science</option>
-                <option value="Life Science">Life Science</option>
-                <option value="English">English</option>
-                <option value="Bengali">Bengali</option>
-                <option value="Computer Science">Computer Science</option>
-            </select>
-
-            <button type="submit" class="btn-search">
-                <i class="fa-solid fa-magnifying-glass"></i> Search
-            </button>
-        </form>
-    </div>
-
-    <!-- 5. STATISTICS -->
-    <div class="stats-wrapper">
-        <div class="stat-box">
-            <h2>1,500+</h2>
-            <p>Students Served</p>
-        </div>
-        <div class="stat-box">
-            <h2>100+</h2>
-            <p>PG & Mess Stays</p>
-        </div>
-        <div class="stat-box">
-            <h2>24/7</h2>
-            <p>Support & Resource Hub</p>
-        </div>
-    </div>
-
-    <!-- FEATURED TEACHERS -->
-    <section class="section-title">
-        <h2>Featured Tutors</h2>
-        <p>Top rated educators across Medinipur district</p>
-    </section>
-
-    <div class="grid">
-        {% if teachers %}
-            {% for teacher in teachers %}
-                <div class="card">
-                    <div class="card-header">
-                        <a href="{% url 'teacher_detail' teacher.id %}">
-                            <h3>{{ teacher.name }}</h3>
+                    <div class="absolute left-0 top-full mt-1 w-56 bg-brand-dark/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                        <a href="{% url 'teachers' %}" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition text-xs">
+                            <i class="fa-solid fa-layer-group text-slate-400"></i> All Tutors Directory
                         </a>
-                    </div>
-                    <div class="card-body">
-                        <p><i class="fa-solid fa-book-open"></i> <span><b>Subject:</b> {{ teacher.subject }}</span></p>
-                        <p><i class="fa-solid fa-graduation-cap"></i> <span><b>Class:</b> {{ teacher.classes }}</span></p>
-                        <p><i class="fa-solid fa-location-dot"></i> <span><b>Location:</b> {{ teacher.location }}</span></p>
-                        <p><i class="fa-solid fa-indian-rupee-sign"></i> <span><b>Fees:</b> ₹{{ teacher.fees }}</span></p>
-                    </div>
-
-                    <div class="card-actions">
-                        <a href="https://wa.me/91{{ teacher.phone }}" target="_blank" class="btn btn-contact">
-                            <i class="fa-brands fa-whatsapp"></i> Contact
+                        <a href="{% url 'teachers' %}?tier=prof-verified" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-white/10 text-amber-300 transition text-xs">
+                            <i class="fa-solid fa-award text-amber-400"></i> Professionally Verified
                         </a>
-                        <a href="{% url 'edit_teacher' teacher.id %}" class="btn btn-edit" title="Edit Teacher">
-                            <i class="fa-solid fa-pen"></i>
+                        <a href="{% url 'teachers' %}?tier=verified" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-white/10 text-sky-300 transition text-xs">
+                            <i class="fa-solid fa-circle-check text-sky-400"></i> Verified Profiles
                         </a>
-                        <form action="{% url 'delete_teacher' teacher.id %}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this listing?');">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-delete" title="Delete Teacher">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
+                        <div class="my-1 border-t border-white/10"></div>
+                        <a href="{% url 'add_teacher' %}" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-emerald-600/20 text-emerald-400 transition text-xs font-bold">
+                            <i class="fa-solid fa-user-plus"></i> Register as Teacher
+                        </a>
                     </div>
                 </div>
-            {% endfor %}
-        {% else %}
-            <div class="empty-state">
-                <h3>No Tutors Listed Yet</h3>
-                <p>Be the first educator to list your teaching profile on STARS!</p>
-                <a href="{% url 'add_teacher' %}" class="btn btn-search">Become a Teacher</a>
+
+                <!-- 2. MESS / PG DROPDOWN -->
+                <div class="relative group py-2">
+                    <a href="{% url 'messpg_list' %}" class="hover:text-white hover:underline underline-offset-8 transition-all duration-200 flex items-center gap-1.5 cursor-pointer">
+                        Mess / PG <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:rotate-180 transition-transform duration-200"></i>
+                    </a>
+
+                    <div class="absolute left-0 top-full mt-1 w-56 bg-brand-dark/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                        <a href="{% url 'messpg_list' %}" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition text-xs">
+                            <i class="fa-solid fa-bed text-amber-400"></i> All Accommodations
+                        </a>
+                        <div class="my-1 border-t border-white/10"></div>
+                        <a href="{% url 'add_messpg' %}" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-emerald-600/20 text-emerald-400 transition text-xs font-bold">
+                            <i class="fa-solid fa-plus"></i> List Mess / PG
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. LEARN DROPDOWN -->
+                <div class="relative group py-2">
+                    <a href="#" class="hover:text-white hover:underline underline-offset-8 transition-all duration-200 flex items-center gap-1.5 cursor-pointer">
+                        Learn <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 group-hover:rotate-180 transition-transform duration-200"></i>
+                    </a>
+
+                    <div class="absolute left-0 top-full mt-1 w-56 bg-brand-dark/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                        <a href="{% url 'learning_python' %}" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition text-xs">
+                            <i class="fa-brands fa-python text-sky-400"></i> Python Programming
+                        </a>
+                        <a href="{% url 'learning_html' %}" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition text-xs">
+                            <i class="fa-brands fa-html5 text-orange-500"></i> HTML & Web Dev
+                        </a>
+                        <a href="{% url 'learning_matlab' %}" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition text-xs">
+                            <i class="fa-solid fa-square-root-variable text-amber-400"></i> MATLAB Computing
+                        </a>
+                        <a href="{% url 'learning_latex' %}" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition text-xs">
+                            <i class="fa-solid fa-file-code text-teal-400"></i> LaTeX Documentation
+                        </a>
+                    </div>
+                </div>
+
+                <a href="{% url 'information' %}" class="hover:text-white hover:underline underline-offset-8 transition-all duration-200">
+                    Information
+                </a>
             </div>
-        {% endif %}
+
+            <!-- RIGHT ACTION BUTTONS -->
+            <div class="flex items-center gap-3">
+                <a href="{% url 'add_teacher' %}" class="bg-white hover:bg-slate-200 text-black font-outfit text-xs font-bold px-5 py-2.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-white/20 uppercase tracking-wider">
+                    Join as Teacher
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- STEP-BY-STEP SNAP SCROLL CONTAINER -->
+    <div class="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+
+       <!-- ================= SECTION 0: HERO SECTION ================= -->
+    <section
+    class="snap-start min-h-screen w-full relative bg-cover bg-center
+           flex flex-col justify-center px-6 sm:px-12 lg:px-20 py-24"
+    style="background-image:
+    linear-gradient(90deg,
+    rgba(3, 7, 18, 0.55) 0%,
+    rgba(3, 7, 18, 0.72) 50%,
+    rgba(3, 7, 18, 0.88) 100%),
+    url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=2000&auto=format&fit=crop');">
+
+       <!-- TWO-COLUMN LAYOUT -->
+        <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            <!-- ================= LEFT SIDE ================= -->
+            <div class="max-w-xl text-left space-y-6">
+
+                <!-- INTRODUCTION -->
+                <p class="text-base sm:text-lg text-slate-200 font-normal leading-relaxed">
+
+                    QPhysics Academy is an educational and academic discovery
+                    platform connecting students with educators and accommodation
+                    providers across Medinipur, West Bengal, India.
+
+                    Explore a centralized directory of tutors, student PG
+                    accommodations, and mess facilities near major educational
+                    institutions.
+
+                </p>
+
+                <!-- LEARNING & RESEARCH RESOURCES -->
+                <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+
+                    Beyond education discovery, QPhysics Academy provides
+                    learning resources in Python programming, HTML web development,
+                    LaTeX scientific typesetting, computational physics, and
+                    astronomy. Our goal is to support students in developing
+                    practical technical skills for academic study and scientific
+                    research.
+
+                </p>
+
+            </div>
+
+
+            <!-- ================= RIGHT SIDE ================= -->
+            <div class="max-w-xl lg:ml-auto text-left space-y-6">
+
+                <!-- MAIN HEADING -->
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl
+                         text-white tracking-tight
+                        leading-[1.05] drop-shadow-2xl
+                        font-['Times_New_Roman',serif]">
+
+                    Fast, reliable
+
+                    <span class="block text-white-300">
+                        directory
+                    </span>
+
+                </h1>
+
+                <!-- SUBTITLE -->
+                <p class="text-base sm:text-lg text-slate-300
+                        font-normal leading-relaxed">
+
+                    Connecting students with educators and
+                    accommodation across Medinipur.
+
+                </p>
+
+                <!-- SERVICE DETAILS / PRICE -->
+                <div class="pt-2 space-y-1">
+
+                    <p class="text-[11px] uppercase tracking-widest
+                            text-slate-400 font-sans font-bold">
+
+                        TUTOR FEES STARTING AT
+
+                    </p>
+
+                    <div class="flex items-baseline gap-2">
+
+                        <span class="text-5xl font-extrabold
+                                    text-white font-sans">
+
+                            ₹500
+
+                        </span>
+
+                        <span class="text-sm text-slate-300">
+
+                            / month
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- CALL TO ACTION BUTTONS -->
+                <div class="pt-4 flex flex-wrap items-center gap-4 font-sans">
+
+                    <a href="{% url 'teachers' %}"
+                    class="bg-white hover:bg-slate-200
+                            text-black text-xs font-bold
+                            px-7 py-3.5 rounded-md
+                            transition-all duration-300
+                            shadow-xl uppercase tracking-wider">
+
+                        Get Started
+
+                    </a>
+
+                    <a href="{% url 'add_teacher' %}"
+                    class="bg-slate-900/80 hover:bg-slate-800
+                            text-white text-xs font-semibold
+                            px-7 py-3.5 rounded-md
+                            border border-white/20
+                            backdrop-blur-md
+                            transition-all duration-300
+                            uppercase tracking-wider">
+
+                        Join as Teacher
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCROLL INDICATOR -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2
+                    text-xs text-slate-400 flex flex-col
+                    items-center gap-1 animate-bounce font-sans">
+
+            <span>Scroll Down</span>
+
+            <i class="fa-solid fa-chevron-down text-sm"></i>
+
+        </div>
+
+        </section>
+        <!-- ================= SECTION 1: RELIABILITY SNAP WITH STAGGERED ANIMATION ================= -->
+<style>
+    @keyframes fadeSlideUp {
+        0% {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .animate-teacher-1 {
+        animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        opacity: 0;
+    }
+    .animate-teacher-2 {
+        animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+        opacity: 0;
+    }
+    .animate-teacher-3 {
+        animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
+        opacity: 0;
+    }
+</style>
+
+<section class="snap-start h-screen w-full relative bg-cover bg-center flex items-center justify-center px-6 sm:px-16 overflow-hidden"
+         style="background-image: linear-gradient(90deg, rgba(3, 7, 18, 0.95) 0%, rgba(3, 7, 18, 0.6) 50%, rgba(3, 7, 18, 0.3) 100%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop');">
+
+    <div class="max-w-7xl w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-12 my-auto">
+
+        <!-- LEFT SIDE: TEXT CONTENT -->
+        <div class="max-w-xl space-y-5 font-['Times_New_Roman',serif] text-left">
+
+            <!-- LABEL -->
+            <span class="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 border border-amber-500/30 px-3 py-1.5 rounded-full font-sans">
+                Platform Guarantee
+            </span>
+
+            <!-- HEADING -->
+            <h2 class="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+                QPhysics: Built for Students & Teachers
+            </h2>
+
+            <!-- DESCRIPTION -->
+            <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+                QPhysics Academy connects students with educators and accommodation providers through a centralized academic directory. Explore tutor listings, student accommodation, and learning resources across selected locations, including Medinipur and Bhubaneswar.
+            </p>
+
+            <!-- BUTTON -->
+            <div class="pt-2 font-sans">
+                <a href="{% url 'information' %}"
+                   class="inline-block bg-white hover:bg-slate-200 text-black text-xs font-bold uppercase tracking-wider px-7 py-3.5 rounded-md transition duration-300 shadow-xl">
+                    Learn More
+                </a>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: TRANSPARENT TEACHERS LIST WITH STAGGERED FADE-IN ANIMATION -->
+        <div class="w-full md:w-1/2 max-w-md space-y-6 text-left font-['Times_New_Roman',serif]">
+            
+            <div class="border-b border-white/20 pb-3 flex items-center justify-between">
+                <h3 class="text-xs font-sans font-bold text-amber-400 uppercase tracking-widest">
+                    Featured Faculty Profiles
+                </h3>
+                <a href="{% url 'teachers' %}" class="text-xs font-sans text-slate-300 hover:text-white uppercase tracking-wider transition">
+                    View All →
+                </a>
+            </div>
+
+            <!-- TEACHER 1 (ANIMATES FIRST AT 0.2s) -->
+            <div class="animate-teacher-1 flex items-start gap-4 border-b border-white/10 pb-4">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" 
+                     alt="Tutor Photo" 
+                     class="h-14 w-14 rounded-full object-cover border-2 border-amber-400 shadow-lg flex-shrink-0">
+                <div class="space-y-1">
+                    <h4 class="text-lg font-bold text-white leading-none flex items-center gap-2">
+                        TEACHER 1 <i class="fa-solid fa-circle-check text-sky-400 text-xs"></i>
+                    </h4>
+                    <p class="text-xs text-amber-300 font-sans font-medium">Subject: Physics & Astrophysics</p>
+                    <p class="text-xs text-slate-300">Education: </p>
+                    <p class="text-xs text-slate-400 font-sans">Experience: 8+ Years | Fees: <strong class="text-white">₹600 / mo</strong></p>
+                </div>
+            </div>
+
+            <!-- TEACHER 2 (ANIMATES SECOND AT 0.6s) -->
+            <div class="animate-teacher-2 flex items-start gap-4 border-b border-white/10 pb-4">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" 
+                     alt="Tutor Photo" 
+                     class="h-14 w-14 rounded-full object-cover border-2 border-sky-400 shadow-lg flex-shrink-0">
+                <div class="space-y-1">
+                    <h4 class="text-lg font-bold text-white leading-none flex items-center gap-2">
+                        TEACHER 2 <i class="fa-solid fa-award text-amber-400 text-xs"></i>
+                    </h4>
+                    <p class="text-xs text-amber-300 font-sans font-medium">Subject:</p>
+                    <p class="text-xs text-slate-300">Education: </p>
+                    <p class="text-xs text-slate-400 font-sans">Experience: 12+ Years | Fees: <strong class="text-white">₹750 / mo</strong></p>
+                </div>
+            </div>
+
+            <!-- TEACHER 3 (ANIMATES THIRD AT 1.0s) -->
+            <div class="animate-teacher-3 flex items-start gap-4">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" 
+                     alt="Tutor Photo" 
+                     class="h-14 w-14 rounded-full object-cover border-2 border-emerald-400 shadow-lg flex-shrink-0">
+                <div class="space-y-1">
+                    <h4 class="text-lg font-bold text-white leading-none flex items-center gap-2">
+                        TEACHER 3 <i class="fa-solid fa-circle-check text-sky-400 text-xs"></i>
+                    </h4>
+                    <p class="text-xs text-amber-300 font-sans font-medium">Subject: </p>
+                    <p class="text-xs text-slate-300">Education: </p>
+                    <p class="text-xs text-slate-400 font-sans">Experience: 5+ Years | Fees: <strong class="text-white">₹500 / mo</strong></p>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- FEATURED PG & MESS -->
-    <section class="section-title">
-        <h2>Featured Accommodations</h2>
-        <p>Verified mess & PG facilities for students</p>
-    </section>
+</section>
+        <!-- ================= SECTION 2: EXPLORE DIRECTORY SNAP ================= -->
+        <section class="snap-start h-screen w-full relative bg-cover bg-center flex items-center justify-end px-6 sm:px-16"
+                 style="background-image: linear-gradient(270deg, rgba(3, 7, 18, 0.95) 0%, rgba(3, 7, 18, 0.6) 50%, rgba(3, 7, 18, 0.3) 100%), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2000&auto=format&fit=crop');">
+            
+            <div class="max-w-2xl bg-brand-card/80 backdrop-blur-xl p-8 sm:p-12 rounded-3xl border border-white/10 shadow-2xl space-y-6 text-right">
+                <span class="text-xs font-bold uppercase tracking-widest text-sky-400 bg-sky-500/10 border border-sky-500/30 px-3.5 py-1.5 rounded-full">
+                    Directory Portal
+                </span>
 
-    <div class="grid">
-        <div class="card">
-            <div class="card-header">
-                <h3>Sunrise Boys Mess</h3>
-            </div>
-            <div class="card-body">
-                <p><i class="fa-solid fa-mars"></i> <span><b>Type:</b> Boys Mess</span></p>
-                <p><i class="fa-solid fa-location-dot"></i> <span><b>Location:</b> Vidyasagar University Road</span></p>
-                <p><i class="fa-solid fa-utensils"></i> <span><b>Food Included:</b> Yes</span></p>
-                <p><i class="fa-solid fa-tag"></i> <span><b>Rent:</b> ₹2,500 / month</span></p>
-            </div>
-            <div class="card-actions">
-                <button class="btn btn-contact"><i class="fa-solid fa-phone"></i> Contact Owner</button>
-            </div>
-        </div>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                    Verified Directory & Accommodations
+                </h2>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Green Valley Girls PG</h3>
-            </div>
-            <div class="card-body">
-                <p><i class="fa-solid fa-venus"></i> <span><b>Type:</b> Girls PG</span></p>
-                <p><i class="fa-solid fa-location-dot"></i> <span><b>Location:</b> Keranitola, Medinipur</span></p>
-                <p><i class="fa-solid fa-utensils"></i> <span><b>Food Included:</b> No</span></p>
-                <p><i class="fa-solid fa-tag"></i> <span><b>Rent:</b> ₹1,800 / month</span></p>
-            </div>
-            <div class="card-actions">
-                <button class="btn btn-contact"><i class="fa-solid fa-phone"></i> Contact Owner</button>
-            </div>
-        </div>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                    Find background-checked private tutors or explore verified PG rooms and student messes near major academic institutes and research centers.
+                </p>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Student Care Home</h3>
+                <div class="pt-2 flex flex-wrap items-center justify-end gap-3">
+                    <a href="{% url 'teachers' %}" class="bg-white hover:bg-slate-200 text-black font-outfit text-xs font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-xl uppercase tracking-widest">
+                        Explore Tutors
+                    </a>
+                    <a href="{% url 'messpg_list' %}" class="bg-white/10 hover:bg-white/20 text-white font-outfit text-xs font-semibold px-6 py-3 rounded-full border border-white/20 backdrop-blur-md transition-all duration-300 uppercase tracking-widest">
+                        Find Mess / PG
+                    </a>
+                </div>
             </div>
-            <div class="card-body">
-                <p><i class="fa-solid fa-users"></i> <span><b>Type:</b> Co-ed Accommodation</span></p>
-                <p><i class="fa-solid fa-location-dot"></i> <span><b>Location:</b> Rabindra Nagar</span></p>
-                <p><i class="fa-solid fa-utensils"></i> <span><b>Food Included:</b> Yes</span></p>
-                <p><i class="fa-solid fa-tag"></i> <span><b>Rent:</b> ₹3,000 / month</span></p>
-            </div>
-            <div class="card-actions">
-                <button class="btn btn-contact"><i class="fa-solid fa-phone"></i> Contact Owner</button>
-            </div>
-        </div>
-    </div>
+        </section>
+                <!-- ================= SECTION: TIER & SERVICE PLANS (STARLINK CARDS) ================= -->
+        <section class="snap-start h-screen w-full relative bg-brand-dark flex flex-col justify-between py-16 px-6 sm:px-12 md:px-20 overflow-hidden"
+        style="background-image: radial-gradient(circle at center, rgba(30, 41, 59, 0.4) 0%, rgba(3, 7, 18, 1) 100%);">
 
-    <!-- WHY CHOOSE STARS -->
-    <section class="section-title">
-        <h2>Why Choose STARS?</h2>
-        <p>
-            Empowering <span style="color: #2563eb; font-weight: 600;">Medinipur</span> with seamless educational connectivity, verified housing, comprehensive documentation from basic to advanced in 
-            <span style="color: #3870a1; font-weight: 700;"><i class="fa-brands fa-python"></i> Python</span>, 
-            <span style="color: #e34f26; font-weight: 700;"><i class="fa-brands fa-html5"></i> HTML</span>, 
-            <span style="color: #e1672a; font-weight: 700;"><i class="fa-solid fa-code"></i> MATLAB</span>, and 
-            <span style="color: #008080; font-weight: 700;"><i class="fa-solid fa-square-root-variable"></i> LaTeX</span>, 
-            alongside daily updates in <span style="color: #0284c7; font-weight: 600;"><i class="fa-solid fa-user-astronaut"></i> Space Science & Astrophysics</span>.
+        <div class="max-w-7xl w-full mx-auto my-auto space-y-8 text-center">
+
+        <!-- SECTION TITLE -->
+        <div class="space-y-2 font-['Times_New_Roman',serif]">
+        <h2 class="text-3xl sm:text-5xl font-bold text-white tracking-tight">
+            Academic Plans & Services
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 font-sans tracking-widest uppercase">
+            Transparent options tailored for every learning milestone
         </p>
-    </section>
-
-    <!-- FEATURE CARDS GRID -->
-    <div class="features-grid">
-        <div class="feature-item" style="border-top: 4px solid #3870a1;">
-            <i class="fa-brands fa-python" style="color: #3870a1; background: #e0f2fe;"></i>
-            <h3><span style="color: #3870a1;">Python</span> for Science</h3>
-            <p>Complete beginner-to-advanced documentation, data science tools, and exoplanet data analysis scripts.</p>
         </div>
 
-        <div class="feature-item" style="border-top: 4px solid #e1672a;">
-            <i class="fa-solid fa-chart-line" style="color: #e1672a; background: #ffedd5;"></i>
-            <h3><span style="color: #e1672a;">MATLAB</span> & Computation</h3>
-            <p>Mathematical modeling, numerical computations, and specialized astrophysics algorithms.</p>
+        <!-- TOP PILL TAB SELECTOR (STARLINK STYLE) -->
+        <div class="inline-flex items-center bg-slate-900/90 border border-white/10 rounded-full p-1 shadow-2xl font-sans text-xs">
+        <button class="bg-white/20 text-white font-semibold px-6 py-2 rounded-full transition-all duration-200 shadow-md">
+            For Students
+        </button>
+        <button class="text-slate-400 hover:text-white font-medium px-6 py-2 rounded-full transition-all duration-200">
+            For Educators
+        </button>
         </div>
 
-        <div class="feature-item" style="border-top: 4px solid #008080;">
-            <i class="fa-solid fa-square-root-variable" style="color: #008080; background: #e6f4f4;"></i>
-            <h3><span style="color: #008080;">LaTeX</span> Publishing</h3>
-            <p>Step-by-step guides for formatting equations, research papers, and academic manuscripts.</p>
-        </div>
-
-        <div class="feature-item" style="border-top: 4px solid #e34f26;">
-            <i class="fa-brands fa-html5" style="color: #e34f26; background: #fee2e2;"></i>
-            <h3><span style="color: #e34f26;">HTML</span> & Web Tools</h3>
-            <p>Modern web development techniques to build scientific dashboards and interactive portfolios.</p>
-        </div>
-
-        <div class="feature-item" style="border-top: 4px solid #0284c7;">
-            <i class="fa-solid fa-user-astronaut" style="color: #0284c7; background: #e0f2fe;"></i>
-            <h3><span style="color: #0284c7;">Space Science</span> Updates</h3>
-            <p>Daily news, research papers, and discovery feeds on astronomy and exoplanet physics.</p>
-        </div>
-
-        <div class="feature-item" style="border-top: 4px solid #2563eb;">
-            <i class="fa-solid fa-house-chimney" style="color: #2563eb; background: #eff6ff;"></i>
-            <h3><span style="color: #2563eb;">Medinipur</span> Directory</h3>
-            <p>Verified student accommodation (Mess/PG) and top-rated local tuition tutors in one platform.</p>
-        </div>
-    </div>
-
-</div>
-
-<!-- FOOTER WITH AFFILIATION & CREDENTIALS -->
-<footer>
-    <div style="max-width: 900px; margin: 0 auto;">
-        <h3>STARS</h3>
-        <p style="margin-bottom: 12px; font-weight: 500; color: #cbd5e1;">
-            Shiksha &bull; Teaching &bull; Accommodation &bull; Research &bull; Space
-        </p>
-        <p style="margin-bottom: 20px;">
-            Connecting Students, Tutors, Housing, and Space Research Resources across Medinipur
-        </p>
+        <!-- 3-CARD GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 pt-2">
         
-        <div class="social-icons">
-            <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <!-- CARD 1: BASIC DIRECTORY ACCESS -->
+        <div class="bg-slate-900/70 border border-white/10 rounded-2xl p-8 text-left flex flex-col justify-between shadow-2xl backdrop-blur-md hover:border-white/30 transition-all duration-300">
+            <div class="space-y-4 font-['Times_New_Roman',serif]">
+                <h3 class="text-2xl font-bold text-white tracking-tight">
+                    Student Basic
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed font-sans">
+                    Free directory browsing for local tutors and verified student PG/mess accommodations.
+                </p>
+                
+                <ul class="space-y-2.5 text-xs text-slate-300 pt-2 font-sans">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-slate-400 text-[10px]"></i> Direct Tutor Contact Options
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-slate-400 text-[10px]"></i> Verified Mess & PG Listings
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-slate-400 text-[10px]"></i> Access to Free Learning Tutorials
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 space-y-1">
+                <p class="text-[10px] font-sans font-bold text-slate-400 uppercase tracking-widest">ACCESS COST</p>
+                <div class="flex items-baseline gap-1 font-['Times_New_Roman',serif]">
+                    <span class="text-4xl font-extrabold text-white font-sans">₹0</span>
+                    <span class="text-xs text-slate-400">/ forever</span>
+                </div>
+            </div>
         </div>
 
-        <p style="font-size: 0.8rem; color: #64748b; margin-top: 15px;">
-            Designed & Developed by <strong>Dr. Mithun Patra</strong> | Astronomy & Space Researcher, NISER, India<br>
-            &copy; STARS Portal. All rights reserved.
+        <!-- CARD 2: VERIFIED HOME TUTORING (HIGHLIGHTED) -->
+        <div class="bg-slate-900/90 border border-amber-500/40 rounded-2xl p-8 text-left flex flex-col justify-between shadow-[0_10px_40px_rgba(251,191,36,0.1)] backdrop-blur-xl relative transform md:-translate-y-2 hover:border-amber-400 transition-all duration-300">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full font-sans">
+                Most Popular
+            </div>
+
+            <div class="space-y-4 font-['Times_New_Roman',serif]">
+                <h3 class="text-2xl font-bold text-white tracking-tight">
+                    Verified Tutoring
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed font-sans">
+                    One-on-one personalized home & online tuition with background-checked subject specialists.
+                </p>
+                
+                <ul class="space-y-2.5 text-xs text-slate-200 pt-2 font-sans">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-amber-400 text-[10px]"></i> Background Verified Faculty
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-amber-400 text-[10px]"></i> Physics, Math & CS Curriculums
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-amber-400 text-[10px]"></i> Flexible Home or Online Schedules
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-amber-400 text-[10px]"></i> Direct Doubt-Solving Support
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 space-y-1">
+                <p class="text-[10px] font-sans font-bold text-slate-400 uppercase tracking-widest">FACULTY FEES FROM</p>
+                <div class="flex items-baseline gap-1 font-['Times_New_Roman',serif]">
+                    <span class="text-4xl font-extrabold text-white font-sans">₹500</span>
+                    <span class="text-xs text-slate-400">/ mo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3: RESEARCH & ADVANCED LEARNING -->
+        <div class="bg-slate-900/70 border border-white/10 rounded-2xl p-8 text-left flex flex-col justify-between shadow-2xl backdrop-blur-md hover:border-white/30 transition-all duration-300">
+            <div class="space-y-4 font-['Times_New_Roman',serif]">
+                <h3 class="text-2xl font-bold text-white tracking-tight">
+                    Research & Tools
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed font-sans">
+                    Specialized modules for university students, LaTeX report writing, MATLAB, and scientific Python.
+                </p>
+                
+                <ul class="space-y-2.5 text-xs text-slate-300 pt-2 font-sans">
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-slate-400 text-[10px]"></i> Scientific Python & Data Analysis
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-slate-400 text-[10px]"></i> MATLAB Computational Labs
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-slate-400 text-[10px]"></i> Professional LaTeX Document Templates
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-slate-400 text-[10px]"></i> Research Methodology Guidance
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 space-y-1">
+                <p class="text-[10px] font-sans font-bold text-slate-400 uppercase tracking-widest">LEARNING PORTAL</p>
+                <div class="flex items-baseline gap-1 font-['Times_New_Roman',serif]">
+                    <span class="text-4xl font-extrabold text-white font-sans">Free</span>
+                    <span class="text-xs text-slate-400">/ open access</span>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <p class="text-[11px] text-slate-500 font-sans pt-2">
+        * Tutoring fees vary based on faculty experience, course level, and regional distance within Medinipur & Bhubaneswar.
         </p>
+
+        </div>
+        </section>
+
+        <!-- ================= FOOTER SNAP ================= -->
+        <section class="snap-start h-auto w-full bg-brand-dark/95 border-t border-white/10 text-center py-8 px-4 text-xs text-slate-500">
+            <p class="font-outfit font-bold text-white text-sm mb-1 tracking-wider uppercase">QPhysics Academy</p>
+            <p>Developed & Maintained by <span class="text-slate-300 font-medium">Mithun Patra</span> | NISER, India</p>
+        </section>
+
     </div>
-</footer>
 
 </body>
 </html>
